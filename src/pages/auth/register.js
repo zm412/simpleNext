@@ -9,8 +9,8 @@ export default function Register(){
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-
-   const router = useRouter()
+  const [answ, setAnsw] = useState('');
+  const router = useRouter()
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault()
@@ -25,31 +25,39 @@ export default function Register(){
       })
      })
     .then(response => response.text())
-      .then(result => console.log(result))
-    
-
-  }
+    .then(result => {
+        setAnsw(JSON.parse(result));
+        console.log(result);
+      }
   )
+  });
+
   return(
-    <>
+    <form method='post'>
+    <p>{answ ? answ.error : ''}</p>
       <TextField
             id="login-register"
             label="Login"
+            error={ answ ? answ.fields.includes('login') : false}
             defaultValue={login}
             variant="outlined"
             onChange={(e) => setLogin(e.target.value)}
           />
+
       <TextField
             id="register-register"
             label="Password"
+            error={ answ ? answ.fields.includes('password') : false}
             defaultValue={password}
             variant="outlined"
             type='password'
             onChange={(e) => setPassword(e.target.value)}
           />
+
       <TextField
             id="password-confirm-register"
             label="Password confirm"
+            error={ answ ? answ.fields.includes('passwordConfirm') : false}
             defaultValue={passwordConfirm}
             type='password'
             variant="outlined"
@@ -59,8 +67,6 @@ export default function Register(){
 
     <Button color="primary" onClick={() => router.push('/auth/login')}>Sing In</Button>
     <Button color="primary" onClick={handleSubmit}>Register</Button>
-    </>
+    </form>
   )
-
-
 }

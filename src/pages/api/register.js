@@ -1,6 +1,6 @@
 
-const models = require('../../models');
-const database = require('../../database');
+const models = require('../../../models');
+const database = require('../../../database');
 const bcrypt = require('bcrypt-nodejs');
 
 export default (req, res) => {

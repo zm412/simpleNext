@@ -2,7 +2,7 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 mongoose.models = {};
-mongoose.modelSchemas = {}dfsdfsdfxcvxverw4er234234
+mongoose.modelSchemas = {};
 
 const schemaUser = new Schema({
   login: {

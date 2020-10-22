@@ -3,27 +3,25 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useState, useEffect, useCallback } from 'react';
 import {useRouter} from 'next/router';
+import useFetch from '../../hooks/useFetch';
 
-export default function Login({response}){
+export default function Login(){
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter()
+  const router = useRouter();
+  const [{resp, isLoading, error}, setFetch] = useFetch('/api/login');
+  
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault()
-
-   fetch('/api/login',{
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({login, password})
-  } )
-    .then(response => response.text())
-      .then(result => console.log(result))
-
+    setFetch({
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({login, password})
+    })
     
-    
-     })
+     });
   
 
  // useEffect(() => {
@@ -34,19 +32,21 @@ export default function Login({response}){
       
 
   return(
-    <>
     <form method='post'>
+      <p>{resp ? resp.error : ''}</p>
       <TextField
-            id="login-login"
+            id="login"
             label="Login"
             defaultValue={login}
+            error={ resp ? resp.fields.includes('login') : false}
             variant="outlined"
             onChange={(e) => setLogin(e.target.value)}
           />
     <p>{login}</p>
       <TextField
             type='password' 
-            id="password-login"
+            id="password"
+            error={ resp ? resp.fields.includes('password') : false}
             label="Password"
             variant="outlined"
             onChange={(e) => setPassword(e.target.value)}
@@ -55,8 +55,6 @@ export default function Login({response}){
     <Button color="primary" onClick={handleSubmit}>Sing In</Button>
     <Button color="primary" onClick={() => router.push('/auth/register') }>Register</Button>
     </form>
-
-    </>
   )
 
 }

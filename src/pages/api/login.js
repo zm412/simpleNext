@@ -1,6 +1,6 @@
 
-const models = require('../../models');
-const database = require('../../database');
+const models = require('../../../models');
+const database = require('../../../database');
 const bcrypt = require('bcrypt-nodejs');
 
 export default ((req, res) => {
@@ -32,7 +32,7 @@ export default ((req, res) => {
               res.end(JSON.stringify({ ok: false, error: 'Wrong login or password', fields:['login', 'password'] }))
             }else{
 
-              res.end(JSON.stringify({ ok: true, error: 'hello', fields:['login', 'password'] }))
+              res.end(JSON.stringify({ ok: true, error: 'hello', fields:[] }))
             }
           });
         }
