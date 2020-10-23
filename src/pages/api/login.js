@@ -6,9 +6,10 @@ const bcrypt = require('bcrypt-nodejs');
 export default ((req, res) => {
 
   console.log(req.body, 'apiLogin')
-  res.statusCode = 200
-  res.setHeader('Content-Type', 'application/json')
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
 
+  console.log(req.body)
   let login = req.body.login;
   let password = req.body.password;
 
@@ -31,7 +32,6 @@ export default ((req, res) => {
             if(!result){
               res.end(JSON.stringify({ ok: false, error: 'Wrong login or password', fields:['login', 'password'] }))
             }else{
-
               res.end(JSON.stringify({ ok: true, error: 'hello', fields:[] }))
             }
           });

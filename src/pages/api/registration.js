@@ -5,9 +5,10 @@ const bcrypt = require('bcrypt-nodejs');
 
 export default (req, res) => {
 
-  res.statusCode = 200
-  res.setHeader('Content-Type', 'application/json')
-  console.log(req.body, 'apiRegister')
+  console.log(req.body, 'apiRegister');
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
+  console.log(req.body)
 
   let login = req.body.login;
   let password = req.body.password;
@@ -37,14 +38,13 @@ export default (req, res) => {
     
   }else{
 
-    models.User.findOne({ login
-
-    }).then(user => {
+    models.User.findOne({ login })
+      .then(user => {
         if(!user){
           bcrypt.hash(password, null, null, (err, hash) => {
             models.User.create({ login, password: hash 
             }).then(user => {
-                res.json({ ok: true });
+              res.end(JSON.stringify({ ok: true }));
             }).catch(err => {
               console.log(err);
               res.end(JSON.stringify({ ok: false, error: "Error, try again later!" }));

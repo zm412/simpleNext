@@ -2,11 +2,8 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Home from '../styles/Home.module.css'
 
-export default function Layout({
+export default function Layout({ children, title = 'This is the default title', }) {
 
-  children,
-  title = 'This is the default title',
-}) {
   return (
     <>
       <Head>
@@ -43,7 +40,7 @@ export default function Layout({
             <a>Posts</a>
           </Link>
            |
-          <Link href="/auth">
+          <Link href="/auth/login">
             <a>Sign In</a>
           </Link>
         </nav>
