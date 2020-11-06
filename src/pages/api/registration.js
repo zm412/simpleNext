@@ -13,6 +13,9 @@ export default (req, res) => {
   let login = req.body.login;
   let password = req.body.password;
   let passwordConfirm = req.body.passwordConfirm;
+  let name = req.body.name;
+  let email = req.body.email;
+  let phoneNumber = req.body.phoneNumber;
 
   if(!login || !password || !passwordConfirm){
     
@@ -42,9 +45,9 @@ export default (req, res) => {
       .then(user => {
         if(!user){
           bcrypt.hash(password, null, null, (err, hash) => {
-            models.User.create({ login, password: hash 
+            models.User.create({ login, password: hash, name, email, phoneNumber 
             }).then(user => {
-              res.end(JSON.stringify({ ok: true }));
+              res.end(JSON.stringify({ ok: true , dataId: user._id}));
             }).catch(err => {
               console.log(err);
               res.end(JSON.stringify({ ok: false, error: "Error, try again later!" }));
