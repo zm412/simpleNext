@@ -30,7 +30,8 @@ export default function Login(){
 
   const fetchingData = () => {
 
-    const data = { login, password, passwordConfirm, name, email, phoneNumber };
+    const data = router.query.enter === 'login'? {login, password} : { login, password, passwordConfirm, name, email, phoneNumber };
+    console.log(data)
 
 
     const config = {

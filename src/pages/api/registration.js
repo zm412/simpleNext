@@ -1,5 +1,5 @@
 
-const models = require('../../../models');
+const models = require('../../models');
 const database = require('../../../database');
 const bcrypt = require('bcrypt-nodejs');
 
@@ -8,7 +8,6 @@ export default (req, res) => {
   console.log(req.body, 'apiRegister');
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  console.log(req.body)
 
   let login = req.body.login;
   let password = req.body.password;
@@ -16,6 +15,7 @@ export default (req, res) => {
   let name = req.body.name;
   let email = req.body.email;
   let phoneNumber = req.body.phoneNumber;
+  
 
   if(!login || !password || !passwordConfirm){
     
@@ -45,10 +45,13 @@ export default (req, res) => {
       .then(user => {
         if(!user){
           bcrypt.hash(password, null, null, (err, hash) => {
-            models.User.create({ login, password: hash, name, email, phoneNumber 
-            }).then(user => {
+            let newUser = { login, password: hash, name, email, phoneNumber };
+            models.User.create(newUser)
+
+              .then(user => {
               res.end(JSON.stringify({ ok: true , dataId: user._id}));
-            }).catch(err => {
+              })
+              .catch(err => {
               console.log(err);
               res.end(JSON.stringify({ ok: false, error: "Error, try again later!" }));
             });
