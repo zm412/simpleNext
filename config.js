@@ -8,6 +8,7 @@ module.exports= {
 
 //  PORT: process.env.PORT || 3000,
   MONGO_URI : process.env.MONGO_URI,
-  IS_PRODUCTION: process.env.NODE_ENV === 'production'
+  IS_PRODUCTION: process.env.NODE_ENV === 'production',
+  secret: process.env.SECRET_KEY
 
 }

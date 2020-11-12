@@ -2,6 +2,7 @@
 const models = require('../../../models');
 const database = require('../../../database');
 const bcrypt = require('bcrypt-nodejs');
+import { sign } from 'jsonwebtoken';
 
 export default ((req, res) => {
 
@@ -19,20 +20,22 @@ export default ((req, res) => {
         if(!login) fields.push('login');
         if(!password) fields.push('password');
 
-    res.end(JSON.stringify({ ok: false, error: 'Empty fields!!!', fields: fields }))
+    res.end(JSON.stringify({ ok: false, message: 'Empty fields!!!', fields: fields }))
     
   }else{
 
     models.User.findOne({ login })
       .then(user => {
         if(!user){
-          res.end(JSON.stringify({ ok: false, error: 'Wrong login or password', fields:['login', 'password'] }))
+          res.end(JSON.stringify({ ok: false, message: 'Wrong login or password', fields:['login', 'password'] }))
         }else{
           bcrypt.compare(password, user.password, (err, result) => {
             if(!result){
-              res.end(JSON.stringify({ ok: false, error: 'Wrong login or password', fields:['login', 'password'] }))
+              res.end(JSON.stringify({ ok: false, message: 'Wrong login or password', fields:['login', 'password'] }))
             }else{
-              res.end(JSON.stringify({ ok: true, error: 'hello', fields:[], dataId: user._id }))
+              const claims = { sub: user._id, login: user.login };
+              const jwt = sign(claims, 'il;kjliui9klkj--9-9jlkjljlkjlj');
+              res.end(JSON.stringify({ ok: true, message: 'Wellcome', dataId: user._id, token: jwt }));
             }
           });
         }

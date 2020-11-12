@@ -44,7 +44,7 @@ export default (req, res) => {
     models.User.findOne({ login })
       .then(user => {
         if(!user){
-          bcrypt.hash(password, null, null, (err, hash) => {
+          bcrypt.hash(password, 10, null, (err, hash) => {
             let newUser = { login, password: hash, name, email, phoneNumber };
             models.User.create(newUser)
 

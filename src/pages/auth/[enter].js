@@ -20,8 +20,32 @@ export default function Login(){
   const [{resp, isLoading, error}, setFetch] = useFetch(url);
   const [stateRegim, setStateRegim] = useState(router.query.enter);
   const [regimRegister, setRegimRegister] = useState(false);
+  const [statusResp, setStatusResp] = useState(false)
+  const [isAuthorizated, setIsAuthorizated] = useState(false);
+  const [store, setStore] = useState(null)
+
+    //let store1 = JSON.parse(sessionStorage.getItem('login'));
+    //console.log(store1)
+    //console.log(store1.login)
+
+  const storeCollector = () => {
+    let store = JSON.parse(sessionStorage.getItem('login'));
+    if(store && store.login){
+      setIsAuthorizated(true);
+      setStore(store);
+    }
+  }
+  
+  useEffect(() => {
+    if(resp != null && resp.ok){
+      sessionStorage.setItem('login', JSON.stringify({login: true, store: resp.token})) ;
+      storeCollector();
+    }
+    
+  }, [resp])
 
   const greeting = router.query.enter === 'registration' ? 'Registration' : 'Login';
+  let dataId, status;
 
    useEffect(() => {
     router.push('/auth/login', undefined, { shallow: true })
@@ -42,13 +66,9 @@ export default function Login(){
 
     setFetch(config)
 
-    if(resp != null && resp.ok){
-      localStorage.setItem('store', JSON.stringify(resp.data));
-      let answ = JSON.parse(localStorage.getItem('store'));
-      console.log(answ)
-      console.log(resp)
-    }
+
   }
+
    
   useEffect(() => {
 
@@ -112,13 +132,15 @@ export default function Login(){
   <Layout>
     <form method='post'>
     <h1>{greeting}</h1>
-      <p>{resp ? resp.error : ''}</p>
+      <p>{resp ? resp.message : ''}</p>
 
       {list}
     
     <Button color="primary" onClick={loginButton}>Sing In</Button>
     <Button color="primary" onClick={registrationButton}>Registration</Button>
     </form>
+    {console.log(store)}
+      
   </Layout>
   )
   

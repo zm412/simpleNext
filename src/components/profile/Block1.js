@@ -8,26 +8,19 @@ import FaceIcon from '@material-ui/icons/Face';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 
 
-export default class Block1 extends React.Component{
+export default function Block1({chapter, resp}){
 
-  constructor(props){
-    super(props);
-  }
+  const chooseHref = chapter == 'Личный кабинет' ? '/profile' : '/api/login';
   
-  handleClick(){
-
-  }
-  
-  render(){
     
-    return( <div>
+    return <div>
               <nav>
           <Link href="/">
             <a><NotificationsNoneIcon /></a>
           </Link>
           |
           <Link href="/profile">
-            <a><FaceIcon />{this.props.chapter} </a>
+            <a><FaceIcon />{chapter} </a>
           </Link>
               </nav>
     
@@ -50,9 +43,8 @@ export default class Block1 extends React.Component{
    `}
     </style>
       </div>
-   )
+   
   }
-}
 
 
 
