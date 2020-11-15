@@ -38,7 +38,7 @@ export default function Login(){
   
   useEffect(() => {
     if(resp != null && resp.ok){
-      sessionStorage.setItem('login', JSON.stringify({login: true, store: resp.token})) ;
+      sessionStorage.setItem('login', JSON.stringify({login: true, token: resp.token})) ;
       storeCollector();
     }
     

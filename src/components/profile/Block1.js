@@ -19,7 +19,7 @@ export default function Block1({chapter, resp}){
             <a><NotificationsNoneIcon /></a>
           </Link>
           |
-          <Link href="/profile">
+          <Link href={chooseHref}>
             <a><FaceIcon />{chapter} </a>
           </Link>
               </nav>

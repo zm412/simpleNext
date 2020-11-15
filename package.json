@@ -7,14 +7,13 @@
     "data": "node ./database.js",
     "build": "next build",
     "start": "next start",
-    "simple": "concurrently 'npm:data' 'npm:dev'"
+    "simple": "concurrently 'npm:dev' 'npm:data' "
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "bcrypt-nodejs": "0.0.3",
     "concurrently": "^5.3.0",
-    "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.0",
     "mongoose": "^5.9.28",
