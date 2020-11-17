@@ -11,9 +11,7 @@ export default ((req, res) => {
 
      models.User.findById({ _id: id })
       .then(user => {
-        let letter = {login: user.login, name: user.name, email: user.email, phoneNumber: user.phoneNumber};
-        console.log(letter)
-            res.end(JSON.stringify(letter))
+            res.end(JSON.stringify(user))
             })
       .catch(err => {
         console.log(err);

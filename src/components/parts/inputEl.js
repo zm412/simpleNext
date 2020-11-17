@@ -9,15 +9,17 @@ export default function InputEl ({collection, idEl}){
 
     let {data, idArr, regimRedact, funcOnChange} = collection;
     let label = data[idEl].label;
+    let meaning = data[idEl].meaning;
     let temp = data[idEl].temp;
     let err = data[idEl].isError;
+  console.log(meaning, 'meaning')
 
       
      return <TextField 
                 label={label} 
                 id={idEl} 
                 error={err} 
-                defaultValue={temp}
+                defaultValue={meaning}
                 variant="outlined" 
                 onChange={funcOnChange} />
             

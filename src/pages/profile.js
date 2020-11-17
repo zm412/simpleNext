@@ -20,11 +20,14 @@ const database = require('../../database');
 export default function Profile(){
   
   const [store, setStore] = useState(null);
-  const [objStore, setObjStore] = useState({});
   const [id, setId] = useState(null);
-  const [token, setTokent] = useState(null)
 
   
+  useEffect(() => {
+    console.log(store, 'store')
+    //console.log(store.login, 'login')
+    
+  }, [store])
 
   const getInfo = (obj) => {
     let token = "Bearer " + obj.token;
@@ -38,11 +41,11 @@ export default function Profile(){
       },
       body: obj.id
     })
-      .then( response => response.text())
+      .then( response => response.json())
       .then((result) => {
-        setObjStore(result) 
+        setStore(result) ;
         console.log(result, 'result')
-        console.log(store, 'store')
+        //console.log(objStore, 'objStore')
       })
       .catch (err => console.log(err))
   }
@@ -51,8 +54,9 @@ export default function Profile(){
 
    useEffect( () => {
       let data = JSON.parse( sessionStorage.getItem('login') ); 
-      console.log(store, 'store', data)
       getInfo(data);
+     
+      console.log(store, 'store')
    }, []);
 
 
@@ -62,7 +66,7 @@ export default function Profile(){
 
   return(<div>
     <Container maxWidth="lg">
-        <ProfileVers />  
+        <ProfileVers params={store || null} />  
     </Container>
     </div>
   )

@@ -9,34 +9,39 @@ import FormBlock from './FormBlock';
 
 class ProfileVers extends React.Component{
 
-   static async getInitialProps(ctx) {
-    const res = await fetch('/api/profile')
-    const json = await res.json()
-    return { stars: json.stargazers_count }
-  }
-
-
 
  constructor(props){
    super(props);
    this.state = {
-     name:'Сидорова Наталья Ивановна',
-     email: 'sydorova@mail.ru',
-     phoneNumber: '+7 989 090 78 90',
-     nameTemp:'Сидорова Наталья Ивановна',
-     emailTemp: 'sydorova@mail.ru',
-     phoneNumberTemp: '+7 989 090 78 90',
+     login: '',
+     name: '',
+     email: '',
+     phoneNumber:'',
+     nameTemp:'',
+     emailTemp: '',
+     phoneNumberTemp: '',
      regimRedact: false,
      nameValidErr:false, 
      phoneNumberValidErr: false 
    }
+
     
     this.clickForRedactProfile = this.clickForRedactProfile.bind(this);
     this.checkFieldValidation = this.checkFieldValidation.bind(this);
     this.changeRegim = this.changeRegim.bind(this);
     this.funcOnChange = this.funcOnChange.bind(this);
     this.currentValue = this.currentValue.bind(this);
-    this.funcSendInfo = this.funcSendInfo.bind(this);
+  }
+
+  componentDidMount(){
+    if(this.props.params != null){
+      this.setState({
+        login: this.props.params.login,
+        name: this.props.params.name,
+        email: this.props.params.email,
+        phoneNumber: this.props.params.phoneNumber,
+      })
+    }
   }
 
   currentValue(){
@@ -60,6 +65,7 @@ class ProfileVers extends React.Component{
   }
 
   clickForRedactProfile(e){
+    
     e.preventDefault();
     this.setState({regimRedact: !this.state.regimRedact});
     this.setState(state => {
@@ -77,31 +83,7 @@ class ProfileVers extends React.Component{
     e.target.value = '';
   }
 
-  
-  funcSendInfo(){
-    let store = [ this.state.nameStore, this.state.phoneNumberStore, this.state.phoneNumberStore ];
-
-    let data = {
-      name : this.state.name,
-      email : this.state.email,
-      phoneNumber : this.state.phoneNumber,
-    }
-
-    let config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'x-access-token': `dljhlsdkjflsjdf`
-      },
-      withCredentials: true,
-      body: JSON.stringify(data)
-    };
-
-    axios.post('http://jsonplaceholder.typicode.com/posts',data,  config)
-          .then(json => localStorage.setItem('store', JSON.stringify(json)))
-
-    let answ = JSON.parse(localStorage.getItem('store'));
-  
-  }
+ 
 
 
   changeRegim(e){
@@ -127,6 +109,8 @@ class ProfileVers extends React.Component{
   
   render(){
     let idArr = ['email', 'phoneNumber'];
+    console.log(this.props, 'props')
+    console.log(this.state, 'state')
 
     if(this.state.regimRedact){
       idArr.unshift('name');
