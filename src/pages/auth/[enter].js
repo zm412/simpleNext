@@ -6,6 +6,7 @@ import {useRouter} from 'next/router';
 import useFetch from '../../hooks/useFetch';
 import Layout from '../../../components/layout';
 import InputEl from '../../components/parts/inputEl'
+import jwt from 'jsonwebtoken'
 
 export default function Login(){
 
@@ -22,27 +23,26 @@ export default function Login(){
   const [regimRegister, setRegimRegister] = useState(false);
   const [statusResp, setStatusResp] = useState(false)
   const [isAuthorizated, setIsAuthorizated] = useState(false);
-  const [store, setStore] = useState(null)
 
     //let store1 = JSON.parse(sessionStorage.getItem('login'));
     //console.log(store1)
     //console.log(store1.login)
 
-  const storeCollector = () => {
-    let store = JSON.parse(sessionStorage.getItem('login'));
-    if(store && store.login){
-      setIsAuthorizated(true);
-      setStore(store);
-    }
-  }
-  
-  useEffect(() => {
+    useEffect(() => {
     if(resp != null && resp.ok){
-      sessionStorage.setItem('login', JSON.stringify({login: true, token: resp.token})) ;
-      storeCollector();
+
+       jwt.verify(resp.token, process.env.NEXT_PUBLIC_SECRET_KEY, function(err, decoded) {
+         if(!err && decoded){
+            sessionStorage.setItem('login', JSON.stringify({login: true, id: resp.dataId, token: resp.token})) ;
+            setIsAuthorizated(true);
+           console.log(decoded)
+           console.log(isAuthorizated)
+         }
+    });
     }
     
   }, [resp])
+
 
   const greeting = router.query.enter === 'registration' ? 'Registration' : 'Login';
   let dataId, status;
@@ -139,7 +139,6 @@ export default function Login(){
     <Button color="primary" onClick={loginButton}>Sing In</Button>
     <Button color="primary" onClick={registrationButton}>Registration</Button>
     </form>
-    {console.log(store)}
       
   </Layout>
   )

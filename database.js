@@ -3,7 +3,6 @@ let mongoose = require('mongoose');
 
 async function setup() {
 
-  console.log(process.env)
   return new Promise((resolve, reject) => {
     mongoose.Promise = global.Promise;
     mongoose.set('debug', process.env.IS_PRODUCTION);
@@ -13,9 +12,9 @@ async function setup() {
     .on('close', () => console.log('Db connection closed'))
     .on('open', () => resolve(mongoose.connections[0]));
 
-    mongoose.connect(process.env.MONGO_URI, { 
+    mongoose.connect(process.env.NEXT_PUBLIC_MONGO_URI, { 
               useNewUrlParser: true,
-              useFindAndModify: false,
+   //           useFindAndModify: false,
               useUnifiedTopology: true 
             });
   })
@@ -27,9 +26,9 @@ setup()
 
       .then(info => {
       console.log((`Connected to ${info.host}:${info.port}/${info.name}`))
-    }).catch( () => { 
-      console.error('Unable to connect to database');
-      process.exit(1)
+    }).catch( (err) => { 
+      console.log(err);
+      console.error('Unable to connect to database', process.env.NEXT_PUBLIC_MONGO_URI);
     });
 
 
