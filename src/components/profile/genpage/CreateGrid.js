@@ -34,7 +34,7 @@ class CreateGrid extends React.Component{
             id={currentId} 
             error={err} 
             helperText={err ? messageErr : '' } 
-            defaultValue={temp}
+            defaultValue={meaning}
             variant="outlined" 
             onChange={funcOnChange} />
         </Grid>

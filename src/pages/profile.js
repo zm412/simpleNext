@@ -66,7 +66,11 @@ export default function Profile(){
 
   return(<div>
     <Container maxWidth="lg">
-        <ProfileVers params={store || null} />  
+    {
+      store && (
+        <ProfileVers params={store} />  
+      )
+    }
     </Container>
     </div>
   )
