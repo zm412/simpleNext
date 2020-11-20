@@ -109,8 +109,6 @@ class ProfileVers extends React.Component{
   
   render(){
     let idArr = ['email', 'phoneNumber'];
-    console.log(this.props, 'props')
-    console.log(this.state, 'state')
 
     if(this.state.regimRedact){
       idArr.unshift('name');

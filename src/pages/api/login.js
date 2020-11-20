@@ -34,7 +34,7 @@ export default ((req, res) => {
               res.end(JSON.stringify({ ok: false, message: 'Wrong login or password', fields:['login', 'password'] }))
             }else{
               const claims = { sub: user._id, login: user.login };
-              const jwt = sign(claims, process.env.NEXT_PUBLIC_SECRET_KEY);
+              const jwt = sign(claims, process.env.NEXT_PUBLIC_SECRET_KEY, { expiresIn: '1h' });
               res.end(JSON.stringify({ ok: true, message: 'Wellcome', dataId: user._id, token: jwt }));
             }
           });
