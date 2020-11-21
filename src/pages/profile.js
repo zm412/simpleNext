@@ -34,7 +34,7 @@ export default function Profile(){
          'Content-Type': 'application/json',
         "Authorization": token
       },
-      body: JSON.stringify( { id: obj.id })   
+     body: JSON.stringify( { id: obj.id })   
     })
       .then( response => response.json())
       .then((result) => {

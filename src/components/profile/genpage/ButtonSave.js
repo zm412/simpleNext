@@ -8,6 +8,7 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import jwt from 'jsonwebtoken';
 
 const styles = (theme) => ({
   root: {
@@ -62,14 +63,35 @@ export default function ButtonSave({closeRedact, currentValue, dataObj}) {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = async () => {
     setOpen(false);
-    setOpenSecond(true);
-      if(!dataObj.name.isError && !dataObj.email.isError && !dataObj.phoneNumber.isError){
-        currentValue();
-      }else{
-        setOpenErr(true);
-      }
+      let data = await JSON.parse( sessionStorage.getItem('login') ); 
+      let verifyToken; 
+         await jwt.verify(data.token, process.env.NEXT_PUBLIC_SECRET_KEY, function(err, decoded) {
+           if(!err && decoded){
+              //this.funcSendInfo(data.id);
+              verifyToken = true;
+              console.log('decoded')
+           }else{
+             console.log(err)
+             window.location.href = '/auth/login'
+
+           }
+
+
+      });
+
+    if(verifyToken){
+          setOpenSecond(true);
+            if(!dataObj.name.isError && !dataObj.email.isError && !dataObj.phoneNumber.isError){
+              currentValue();
+            }else{
+              setOpenErr(true);
+            }
+    }else{
+      console.log(err)
+    }
+
   };
 
   const handleCloseSecond = () => {

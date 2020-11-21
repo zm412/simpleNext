@@ -6,6 +6,8 @@ import Block2 from '../Block2';
 import Avatar from '../Avatar';
 import FormBlock from './FormBlock';
 import jwt from 'jsonwebtoken';
+import Router from 'next/router';
+import { useRouter } from 'next/router'
 
 
 class ProfileVers extends React.Component{
@@ -106,6 +108,8 @@ class ProfileVers extends React.Component{
               console.log('decoded')
            }else{
              console.log(err)
+             window.location.href = '/auth/login'
+
            }
            console.log(err)
       });
@@ -140,6 +144,12 @@ class ProfileVers extends React.Component{
       .then( response => response.json())
       .then((result) => {
         console.log(result, 'resultOk')
+        this.setState({
+          login: result.login,
+          name: result.name,
+          email: result.email,
+          phoneNumber: result.phoneNumber
+        })
         //console.log(objStore, 'objStore')
       })
       .catch (err => console.log(err))
