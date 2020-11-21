@@ -26,8 +26,8 @@ class ProfileVers extends React.Component{
      regimRedact: false,
      nameValidErr:false, 
      phoneNumberValidErr: false ,
+     emailValidErr: false ,
      updateData: false,
-     dataToken: null
    }
 
     
@@ -163,7 +163,7 @@ class ProfileVers extends React.Component{
   }
 
   checkFieldValidation(key){
-    let nameExp = /^[A-ЯЁ][а-яё]+\s[A-ЯЁ][а-яё]+\s[A-ЯЁ][а-яё]+$/;
+    let nameExp = /^[A-ЯЁA-Z][а-яёa-z]+\s[A-ЯЁA-Z][а-яёa-z]/;
     let phoneExp = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/;
     let emailExp = /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/u;
 
@@ -185,7 +185,6 @@ class ProfileVers extends React.Component{
       idArr.unshift('name');
     }
     console.log(this.state.updateData)
-    console.log(this.state.dataToken)
 
     let data = {
       name: {
@@ -199,7 +198,7 @@ class ProfileVers extends React.Component{
         meaning: this.state.email,
         temp: this.state.emailTemp,
         label: "Email",
-        isError: false
+        isError: this.state.emailValidErr 
       },
       phoneNumber:{
         meaning: this.state.phoneNumber,
