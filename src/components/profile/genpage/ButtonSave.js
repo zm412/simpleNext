@@ -53,7 +53,7 @@ const DialogActions = withStyles((theme) => ({
 
 
 
-export default function ButtonSave({closeRedact, currentValue, funcSendInfo, dataObj}) {
+export default function ButtonSave({closeRedact, currentValue, dataObj}) {
   const [open, setOpen] = React.useState(false);
   const [openSecond, setOpenSecond] = React.useState(false);
   const [openErr, setOpenErr] = React.useState(false);
@@ -67,7 +67,6 @@ export default function ButtonSave({closeRedact, currentValue, funcSendInfo, dat
     setOpenSecond(true);
       if(!dataObj.name.isError && !dataObj.email.isError && !dataObj.phoneNumber.isError){
         currentValue();
-        funcSendInfo();
       }else{
         setOpenErr(true);
       }

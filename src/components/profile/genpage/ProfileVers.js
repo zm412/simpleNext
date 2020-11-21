@@ -5,6 +5,7 @@ import Block3 from '../Block3';
 import Block2 from '../Block2';
 import Avatar from '../Avatar';
 import FormBlock from './FormBlock';
+import jwt from 'jsonwebtoken';
 
 
 class ProfileVers extends React.Component{
@@ -22,7 +23,9 @@ class ProfileVers extends React.Component{
      phoneNumberTemp: '',
      regimRedact: false,
      nameValidErr:false, 
-     phoneNumberValidErr: false 
+     phoneNumberValidErr: false ,
+     updateData: false,
+     dataToken: null
    }
 
     
@@ -31,6 +34,8 @@ class ProfileVers extends React.Component{
     this.changeRegim = this.changeRegim.bind(this);
     this.funcOnChange = this.funcOnChange.bind(this);
     this.currentValue = this.currentValue.bind(this);
+    this.updateInfo = this.updateInfo.bind(this);
+    this.funcSendInfo = this.funcSendInfo.bind(this);
   }
 
   componentDidMount(){
@@ -44,14 +49,20 @@ class ProfileVers extends React.Component{
     }
   }
 
-  currentValue(){
-    this.setState({
+ async currentValue(){
+   await this.setState({
       name: this.state.nameTemp,
       email: this.state.emailTemp,
-      phoneNumber: this.state.phoneNumberTemp
+      phoneNumber: this.state.phoneNumberTemp,
+      updateData: true
     })
     
+      console.log('current')
+    await this.updateInfo();
   }
+
+
+
   
   funcOnChange(e){
     e.preventDefault();
@@ -83,7 +94,57 @@ class ProfileVers extends React.Component{
     e.target.value = '';
   }
 
+
+  async updateInfo(){
+     console.log('hello')
+      let data = await JSON.parse( sessionStorage.getItem('login') ); 
+      let verifyToken; 
+         await jwt.verify(data.token, process.env.NEXT_PUBLIC_SECRET_KEY, function(err, decoded) {
+           if(!err && decoded){
+              //this.funcSendInfo(data.id);
+              verifyToken = true;
+              console.log('decoded')
+           }else{
+             console.log(err)
+           }
+           console.log(err)
+      });
+
+   verifyToken ? this.funcSendInfo(data) : console.log('error')
+
+  } 
+
+
+  
+  funcSendInfo(pac){
+    console.log(pac)
+
+    let data = {
+      id: pac.id,
+      name : this.state.name,
+      email : this.state.email,
+      phoneNumber : this.state.phoneNumber,
+    }
+    console.log(data)
+    
+    let token = "Bearer " + pac.token;
+
+    fetch('/api/profileUpdate', {
+      method: "POST",
+      headers: {
+         'Content-Type': 'application/json' ,
+        "Authorization": token
+      },
+      body: JSON.stringify(data)
+    })
+      .then( response => response.json())
+      .then((result) => {
+        console.log(result, 'resultOk')
+        //console.log(objStore, 'objStore')
+      })
+      .catch (err => console.log(err))
  
+  }
 
 
   changeRegim(e){
@@ -113,6 +174,8 @@ class ProfileVers extends React.Component{
     if(this.state.regimRedact){
       idArr.unshift('name');
     }
+    console.log(this.state.updateData)
+    console.log(this.state.dataToken)
 
     let data = {
       name: {
@@ -137,7 +200,7 @@ class ProfileVers extends React.Component{
       }
       }
 
-    let propsForForm = {data: data,  idArr: idArr, regimRedact: this.state.regimRedact, changeRegim: this.changeRegim, funcOnChange: this.funcOnChange, currentValue: this.currentValue, funcSendInfo: this.funcSendInfo};
+    let propsForForm = {data: data,  idArr: idArr, regimRedact: this.state.regimRedact, changeRegim: this.changeRegim, funcOnChange: this.funcOnChange, currentValue: this.currentValue };
     
     return(
     <div>     

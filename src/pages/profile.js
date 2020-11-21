@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Link from 'next/link'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Container from '@material-ui/core/Container';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 const models = require('../models');
 const database = require('../../database');
 
@@ -23,13 +23,7 @@ export default function Profile(){
   const [id, setId] = useState(null);
 
   
-  useEffect(() => {
-    console.log(store, 'store')
-    //console.log(store.login, 'login')
-    
-  }, [store])
-
-  const getInfo = (obj) => {
+   const getInfo = (obj) => {
     let token = "Bearer " + obj.token;
     let url = 'http://localhost:3000/api/profile';
     console.log(token, 'token')
@@ -37,9 +31,10 @@ export default function Profile(){
     fetch(url, {
       method: "POST",
       headers: {
+         'Content-Type': 'application/json',
         "Authorization": token
       },
-      body: obj.id
+      body: JSON.stringify( { id: obj.id })   
     })
       .then( response => response.json())
       .then((result) => {
@@ -48,19 +43,22 @@ export default function Profile(){
         //console.log(objStore, 'objStore')
       })
       .catch (err => console.log(err))
+
   }
 
 
 
    useEffect( () => {
       let data = JSON.parse( sessionStorage.getItem('login') ); 
-      getInfo(data);
-     
-      console.log(store, 'store')
-   }, []);
-
-
  
+       jwt.verify(data.token, process.env.NEXT_PUBLIC_SECRET_KEY, function(err, decoded) {
+         if(!err && decoded){
+            getInfo(data);
+            console.log(decoded)
+         }
+    });
+
+   }, []);
 
 
 
