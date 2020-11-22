@@ -9,6 +9,8 @@
 }
 
 */
+
+
 .main {
   padding: 5rem 0;
   flex: 1;
@@ -166,6 +168,34 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 border-radius: 10px;
 color: white;
 }
+
+.nameBlock .imgIcon{
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-image: url('../../public/img/image3.jpg');
+  border-radius: 50%;
+  vertical-align: middle;
+}
+ 
+.nameBlock .nameLine{
+position: absolute;
+width: 419px;
+height: 41px;
+left: 152px;
+
+
+font-family: Open Sans;
+font-style: normal;
+font-weight: 600;
+font-size: 30px;
+line-height: 41px;
+/* identical to box height */
+
+
+color: #FFFFFF;
+}
+
 
 .profile{
   display: flex;

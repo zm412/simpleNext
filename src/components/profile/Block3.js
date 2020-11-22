@@ -18,12 +18,11 @@ class Block3 extends React.Component{
     
     return(
 
-    <Grid container spacing={4} className={styles.nameBlock}>
-        <Grid item xs={7}> <p>{this.props.fullName}</p> </Grid>
-        <Grid item xs={2}>
+      <div className={styles.nameBlock}>
+        <div className={styles.imgIcon}></div>
+        <div className={styles.nameLine}><p>{this.props.fullName}</p></div>
       <Button href="#text-buttons"  onClick={this.props.forClick} color="primary">{this.props.buttonsName}</Button>
-        </Grid>
-   </Grid>
+      </div>
     )
   }
 }
