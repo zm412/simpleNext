@@ -59,8 +59,10 @@
 
     .block1{
       position: absolute;
-      height: 90px;
+      height: $block1Height;
       width: 100%;
+      top: 0px;
+      border: 1px solid black;
       
       .block1Icon1{
         position: absolute;
@@ -116,6 +118,53 @@
 
 }
  
+
+  .block2{
+    position: absolute;
+    height: $block2Height;
+    width: 100%;
+    top: $block1Height;
+    border: 1px solid black;
+
+    .block2Text1{
+      position: absolute;
+      width: 190px;
+      height: 25px;
+      right: 1144px;
+      top: 0px;
+
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 25px;
+      /* identical to box height */
+      text-align:right;
+      color: #FFFFFF;
+
+    }
+
+    .block2Text2{
+      position: absolute;
+      width: 190px;
+      height: 19px;
+      right: 1144px;
+      top: 20px;
+      text-align:right;
+
+      a{
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 19px;
+        color: white;
+      }
+      
+    }
+
+    
+  }
 
 .profile{
   display: flex;

@@ -3,6 +3,7 @@ let React = require('react');
 import Grid from '@material-ui/core/Grid';
 import Link from 'next/link'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import styles from '../../../styles/Home.module.scss';
 
 
 class Block2 extends React.Component{
@@ -14,25 +15,18 @@ class Block2 extends React.Component{
   render(){
     
     return(
-      <div>
-    <Grid container spacing={4}>
-        <Grid item xs={4}> ЛИЧНЫЙ ПРОФИЛЬ </Grid>
-        <Grid item xs={7}></Grid>
-    </Grid>
-      
-    <Grid container spacing={4}>
-        <Grid item xs={6}>
-              <Breadcrumbs aria-label="breadcrumb">
-                <Link color="inherit" href="/" onClick={this.handleClick}>
-                  Главная
-                </Link>
-                <Link color="inherit" href="/profile" onClick={this.handleClick}>
-                  Личный профиль
-                </Link>
-              </Breadcrumbs>
-        </Grid>
-   </Grid>
-      </div>
+      <div className={styles.block2}>
+        <div className={styles.block2Text1}>ЛИЧНЫЙ ПРОФИЛЬ</div>
+        <div className={styles.block2Text2}>
+            <Link color="inherit" href="/">
+                <a> Главная / </a>
+            </Link>
+              
+            <Link color="inherit" href="/profile">
+                <a>Личный профиль</a>
+            </Link>
+        </div>
+    </div>
     )
   }
 }
