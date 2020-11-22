@@ -10,7 +10,7 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 
 export default function Block1({chapter, resp}){
 
-  const chooseHref = chapter == 'Личный кабинет' ? '/profile' : '/api/login';
+  const chooseHref = chapter == 'Личный кабинет' ? '/profile' : '/auth/login';
   
     
     return <div>

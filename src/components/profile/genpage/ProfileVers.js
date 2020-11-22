@@ -99,6 +99,7 @@ class ProfileVers extends React.Component{
 
   async updateInfo(){
      console.log('hello')
+
       let data = await JSON.parse( sessionStorage.getItem('login') ); 
       let verifyToken; 
          await jwt.verify(data.token, process.env.NEXT_PUBLIC_SECRET_KEY, function(err, decoded) {
@@ -192,20 +193,23 @@ class ProfileVers extends React.Component{
         temp: this.state.nameTemp,
         label: "Имя и фамилия",
         isError: this.state.nameValidErr,
-        messageErr: 'Вы неверно указали имя'
+        messageErr: 'Вы неверно указали имя',
+        className:'nameBlock'
       },
       email: {
         meaning: this.state.email,
         temp: this.state.emailTemp,
         label: "Email",
-        isError: this.state.emailValidErr 
+        isError: this.state.emailValidErr ,
+        className: 'infoBlock'
       },
       phoneNumber:{
         meaning: this.state.phoneNumber,
         temp: this.state.phoneNumberTemp,
         label: "Номер телефона",
         isError: this.state.phoneNumberValidErr,
-        messageErr: 'Вы неверно указали номер телефона'
+        messageErr: 'Вы неверно указали номер телефона',
+        className: 'infoBlock'
       }
       }
 
@@ -214,7 +218,7 @@ class ProfileVers extends React.Component{
     return(
     <div>     
       
-      <Avatar thisChapter= {data.email.meaning}/>
+      <Avatar thisChapter={data.email.meaning}/>
       <Block2 />
       <Block3 fullName={this.state.name} forClick={this.clickForRedactProfile} buttonsName={this.state.regimRedact ? 'Закрыть Х': 'Редактировать'}  />
        <FormBlock  collection={propsForForm} />

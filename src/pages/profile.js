@@ -11,6 +11,7 @@ import Container from '@material-ui/core/Container';
 import jwt from 'jsonwebtoken';
 const models = require('../models');
 const database = require('../../database');
+import {useRouter} from 'next/router';
 
 
 
@@ -21,6 +22,7 @@ export default function Profile(){
   
   const [store, setStore] = useState(null);
   const [id, setId] = useState(null);
+  const router = useRouter();
 
   
    const getInfo = (obj) => {
@@ -68,6 +70,7 @@ export default function Profile(){
       store && (
         <ProfileVers params={store} />  
       )
+
     }
     </Container>
     </div>
