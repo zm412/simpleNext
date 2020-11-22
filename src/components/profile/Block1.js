@@ -4,44 +4,27 @@ let React = require('react');
 import Grid from '@material-ui/core/Grid';
 import Link from 'next/link'
 import Button from '@material-ui/core/Button';
-import FaceIcon from '@material-ui/icons/Face';
-import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
+import styles from '../../../styles/Home.module.scss';
 
 
-export default function Block1({chapter, resp}){
+export default function Block1({chapter}){
 
   const chooseHref = chapter == 'Личный кабинет' ? '/profile' : '/auth/login';
   
     
-    return <div>
-              <nav>
-          <Link href="/">
-            <a><NotificationsNoneIcon /></a>
-          </Link>
-          |
-          <Link href={chooseHref}>
-            <a><FaceIcon />{chapter} </a>
-          </Link>
-              </nav>
-    
- <style jsx>{`
-      nav {
-        position: fixed;
-        height: 60px;
-        top: 0;
-        right: 0;
-        display: flex;
-        justify-content: space-around;
-        align-items: right;
-        
-      }
+    return <div className={styles.block1} >
 
-      nav a {
-        color: #fff;
-        text-decoration: none;
-      }
-   `}
-    </style>
+              <Link href="/">
+                <a className={styles.block1Icon1}></a>
+              </Link>
+              <div className={styles.block1LineVertical} ></div>
+              <Link href={chooseHref}>
+                <a className={styles.block1Icon2}></a>
+              </Link>
+              <Link href={chooseHref}>
+                <a className={styles.block1Text}>{chapter} </a>
+              </Link>
+       
       </div>
    
   }

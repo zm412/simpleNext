@@ -1,6 +1,6 @@
 
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.scss'
 import Block1 from '../components/profile/Block1';
 import Block2 from '../components/profile/Block2';
 import { useState, useEffect, useCallback } from 'react';

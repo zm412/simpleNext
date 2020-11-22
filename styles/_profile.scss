@@ -1,0 +1,134 @@
+
+.gradient{
+
+  position: absolute;
+  width: 1481px;
+  height: 470px;
+  background-image: url('../public/img/rectangle.jpg');
+  left: -41px;
+  top: 0px;
+  /* градиент */
+
+  //background: linear-gradient(270deg, #2196F3 0%, #1EC3AF 101.06%);
+
+    .infoBlock {
+      background: white; /* Цвет фона */
+      color: black; /* Цвет текста */
+      padding: 20px; /* Поля вокруг текста */
+      margin: 20px;
+      -moz-border-radius: 5px; /* Для Firefox 3 */
+      -webkit-border-radius: 5px; /* Для Safari 4 и Chrome */
+      border-radius: 5px; /* Для современных браузеров */
+  }
+
+    .nameBlock {
+      position: absolute;
+      height: 128px;
+      left: 0%;
+      right: -0.08%;
+      top: 200px; 
+      background: linear-gradient(270deg, #1A78C2 0%, #1A78C2 101.06%);
+      border-radius: 10px;
+      color: white;
+
+        .nameLine{
+          position: absolute;
+          width: 419px;
+          height: 41px;
+          left: 152px;
+          font-family: Open Sans;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 30px;
+          line-height: 41px;
+          /* identical to box height */
+          color: #FFFFFF;
+          }
+
+      .imgIcon{
+          position: absolute;
+          width: 80px;
+          height: 80px;
+          background-image: url('../public/img/image3.jpg');
+          border-radius: 50%;
+          vertical-align: middle;
+      }
+
+        }
+
+
+    .block1{
+      position: absolute;
+      height: 90px;
+      width: 100%;
+      
+      .block1Icon1{
+        position: absolute;
+        height: 29.25px;
+        width: 24px;
+        top: 10px;
+        right: 234px;
+        border-radius: 0px;
+        background-image: url('../public/img/Vector.png') ;
+        background-size: 100%;
+      }
+
+      .block1LineVertical{
+        position: absolute;
+        width: 39px;
+        height: 0px;
+        right: 195px;
+        top: 21px;
+
+        border: 1px solid #FFFFFF;
+        transform: rotate(90deg);
+      }
+
+      .block1Icon2{
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        right: 157px;
+        top: 3.75px;
+        background-image: url('../public/img/image3.jpg');
+        border-radius: 50%;
+        background-size: 100%;
+      }
+
+      .block1Text{
+        position: absolute;
+        width: 79px;
+        height: 19px;
+        right: 60px;
+        top: 15px; 
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        /* identical to box height */
+
+
+        color: #FFFFFF;
+      }
+    }
+
+
+}
+ 
+
+.profile{
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+  flex: auto;
+  background-image: url('../public/img/rectangle.jpg');
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+}
+
+

@@ -1,13 +1,14 @@
 let React = require('react');
 import Grid from '@material-ui/core/Grid';
 import Link from 'next/link'
+import Block1 from '../Block1';
 import Block3 from '../Block3';
 import Block2 from '../Block2';
-import Avatar from '../Avatar';
 import FormBlock from './FormBlock';
 import jwt from 'jsonwebtoken';
 import Router from 'next/router';
 import { useRouter } from 'next/router'
+import styles from '../../../../styles/Home.module.scss'
 
 
 class ProfileVers extends React.Component{
@@ -216,9 +217,9 @@ class ProfileVers extends React.Component{
     let propsForForm = {data: data,  idArr: idArr, regimRedact: this.state.regimRedact, changeRegim: this.changeRegim, funcOnChange: this.funcOnChange, currentValue: this.currentValue };
     
     return(
-    <div>     
+    <div className={styles.gradient}>
       
-      <Avatar thisChapter={data.email.meaning}/>
+      <Block1 chapter={data.email.meaning}/>
       <Block2 />
       <Block3 fullName={this.state.name} forClick={this.clickForRedactProfile} buttonsName={this.state.regimRedact ? 'Закрыть Х': 'Редактировать'}  />
        <FormBlock  collection={propsForForm} />

@@ -2,7 +2,7 @@
 let React = require('react');
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import styles from '../../styles/Home.module.css'
+import styles from '../../../styles/Home.module.scss'
 
 
 class Block3 extends React.Component{
