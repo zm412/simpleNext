@@ -221,7 +221,7 @@ class ProfileVers extends React.Component{
       
       <Block1 chapter={data.email.meaning}/>
       <Block2 />
-      <Block3 fullName={this.state.name} forClick={this.clickForRedactProfile} buttonsName={this.state.regimRedact ? 'Закрыть Х': 'Редактировать'}  />
+      <Block3 fullName={this.state.name} forClick={this.clickForRedactProfile} buttonsName={this.state.regimRedact ? 'ЗАКРЫТЬ': 'РЕДАКТИРОВАТЬ'}  />
        <FormBlock  collection={propsForForm} />
     </div>
    )
