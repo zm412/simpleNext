@@ -1,7 +1,6 @@
 
 import Dialog from "@material-ui/core/Dialog";
 let React = require('react');
-import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 
@@ -21,12 +20,8 @@ class Block4 extends React.Component{
 
     
     return(
-<div>
-    <Grid container spacing={4}>
-        <Grid item xs={12}>
+    <div>
       <Button round variant="contained" onClick={ () => this.setState({isModalOpen: true}) } color="primary">Сохранить</Button>
-        </Grid>
-   </Grid>
             <Dialog
               title="Сохранить измеения?"
               open={this.state.isModalOpen}

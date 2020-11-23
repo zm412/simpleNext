@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import CreateGrid from './CreateGrid';
 import ButtonSave from './ButtonSave';
 import Block4 from '../Block4';
+import styles from '../../../../styles/Home.module.scss';
 
 
 class FormBlock extends React.Component{
@@ -26,14 +27,16 @@ class FormBlock extends React.Component{
     let inputProps = this.props.collection; 
     let list = this.props.collection.idArr.map((item, index) => <CreateGrid idEl={item} key={index}  inputProps={inputProps} />)
     let button = inputProps.regimRedact ?  <ButtonSave  closeRedact={inputProps.changeRegim} currentValue={inputProps.currentValue} dataObj={inputProps.data} /> : '';
+
     return(
-      <form action="" method="post" >
-          <Grid container spacing={4}>
+      <div className={styles.block4} >
+
+        <form action="" method="post" >
             {list}
             {button}
-         </Grid>
+        </form>
 
-      </form>
+      </div>
     )
   }
 }

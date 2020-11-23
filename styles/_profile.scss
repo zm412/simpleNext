@@ -7,29 +7,126 @@
   background-image: url('../public/img/rectangle.jpg');
   left: -41px;
   top: 0px;
-  /* градиент */
 
-  //background: linear-gradient(270deg, #2196F3 0%, #1EC3AF 101.06%);
-
-    .infoBlock {
-      background: white; /* Цвет фона */
-      color: black; /* Цвет текста */
-      padding: 20px; /* Поля вокруг текста */
-      margin: 20px;
-      -moz-border-radius: 5px; /* Для Firefox 3 */
-      -webkit-border-radius: 5px; /* Для Safari 4 и Chrome */
-      border-radius: 5px; /* Для современных браузеров */
   }
+      .block1{
+      position: absolute;
+      height: $block1Height;
+      width: $blockWidth;
+      right: $blockRigth;
+      top: 0px;
+      border: 1px solid black;
+      
+      .block1Icon1{
+        position: absolute;
+        height: 29.25px;
+        width: 24px;
+        top: 10px;
+        right: 234px;
+        border-radius: 0px;
+        background-image: url('../public/img/Vector.png') ;
+        background-size: 100%;
+      }
 
-    .block3 {
+      .block1LineVertical{
+        position: absolute;
+        width: 39px;
+        height: 0px;
+        right: 195px;
+        top: 21px;
+
+        border: 1px solid #FFFFFF;
+        transform: rotate(90deg);
+      }
+
+      .block1Icon2{
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        right: 157px;
+        top: 3.75px;
+        background-image: url('../public/img/image3.jpg');
+        border-radius: 50%;
+        background-size: 100%;
+      }
+
+      .block1Text{
+        position: absolute;
+        width: 79px;
+        height: 19px;
+        right: 60px;
+        top: 15px; 
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 19px;
+        /* identical to box height */
+
+
+        color: #FFFFFF;
+      }
+    }
+
+
+ 
+
+  .block2{
+    position: absolute;
+    height: $block2Height;
+    width: $blockWidth;
+    top: $block1Height;
+    right: $blockRigth;
+    border: 1px solid black;
+
+    .block2Text1{
+      position: absolute;
+      width: 190px;
+      height: 25px;
+      right: 1100px;
+      top: 0px;
+
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 25px;
+      /* identical to box height */
+      text-align:right;
+      color: #FFFFFF;
+
+    }
+
+    .block2Text2{
+      position: absolute;
+      width: 190px;
+      height: 19px;
+      right: 1100px;
+      top: 20px;
+      text-align:right;
+
+      a{
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 19px;
+        color: white;
+      }
+      
+     }
+    }
+    
+  .block3 {
       position: absolute;
       height: $block3Height;
-      left: 0%;
-      right: -0.08%;
+      width: $blockWidth;
+      right: $blockRigth;
       top: $block1Height + $block2Height; 
       background: linear-gradient(270deg, #1A78C2 0%, #1A78C2 101.06%);
       border-radius: 10px;
       color: white;
+      border: 1px solid black;
 
         .block3Text1{
           position: absolute;
@@ -97,121 +194,33 @@
       }
  
      }
-
-      
-
-
-        }
+  }
 
 
-    .block1{
-      position: absolute;
-      height: $block1Height;
-      width: 100%;
-      top: 0px;
-      border: 1px solid black;
-      
-      .block1Icon1{
+
+
+     .block4{
         position: absolute;
-        height: 29.25px;
-        width: 24px;
-        top: 10px;
-        right: 234px;
-        border-radius: 0px;
-        background-image: url('../public/img/Vector.png') ;
-        background-size: 100%;
-      }
+        height: $block4InfoHeight;
+        width: $blockWidth;
+        right: $blockRigth;
+        top: $block1Height + $block2Height + $block3Height;
+        border: 1px solid black;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
 
-      .block1LineVertical{
-        position: absolute;
-        width: 39px;
-        height: 0px;
-        right: 195px;
-        top: 21px;
+            .infoBlock {
+              width: 1308px;
+              height: $block4InfoHeight / 2 - 2px;
+              border: 1px solid #CAE7FE;
+              border-radius: 5px; /* Для современных браузеров */
+              background: #FFFFFF;
 
-        border: 1px solid #FFFFFF;
-        transform: rotate(90deg);
-      }
-
-      .block1Icon2{
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        right: 157px;
-        top: 3.75px;
-        background-image: url('../public/img/image3.jpg');
-        border-radius: 50%;
-        background-size: 100%;
-      }
-
-      .block1Text{
-        position: absolute;
-        width: 79px;
-        height: 19px;
-        right: 60px;
-        top: 15px; 
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 19px;
-        /* identical to box height */
-
-
-        color: #FFFFFF;
-      }
-    }
+          }
 
 
 }
- 
-
-  .block2{
-    position: absolute;
-    height: $block2Height;
-    width: 100%;
-    top: $block1Height;
-    border: 1px solid black;
-
-    .block2Text1{
-      position: absolute;
-      width: 190px;
-      height: 25px;
-      right: 1144px;
-      top: 0px;
-
-      font-family: Open Sans;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 17px;
-      line-height: 25px;
-      /* identical to box height */
-      text-align:right;
-      color: #FFFFFF;
-
-    }
-
-    .block2Text2{
-      position: absolute;
-      width: 190px;
-      height: 19px;
-      right: 1144px;
-      top: 20px;
-      text-align:right;
-
-      a{
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 15px;
-        line-height: 19px;
-        color: white;
-      }
-      
-    }
-
     
-  }
 
 .profile{
   display: flex;
