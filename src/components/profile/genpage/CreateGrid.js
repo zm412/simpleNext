@@ -15,6 +15,7 @@ class CreateGrid extends React.Component{
 
     }
   }
+
   
   render(){
 
@@ -26,12 +27,13 @@ class CreateGrid extends React.Component{
     let temp = data[currentId].temp;
     let err = data[currentId].isError;
     let messageErr = data[currentId].messageErr;
-    let style = styles[data[currentId].className] ;
-    console.log(style)
+    let styleShow = styles[data[currentId].classNameShow] ;
+    let styleRedact = styles[data[currentId].classNameRedact] ;
 
     if(regimRedact){
       
-     return <Grid item xs={12} sm={3} className={style} >
+     return <Grid item xs={12} sm={3} >
+        <div className={styleRedact}>
           <TextField 
             label={label} 
             id={currentId} 
@@ -40,14 +42,18 @@ class CreateGrid extends React.Component{
             defaultValue={meaning}
             variant="outlined" 
             onChange={funcOnChange} />
+        </div>
         </Grid>
         
       
     }else{
-        return <div className={styles.infoBlock} >
-                  <p>{label}</p>
-                  <p> {meaning} </p>
-                  <p> {console.log(data[currentId].isError)} </p>
+        return <div className={styles.block4Show} >
+                <div className={styles.block4First}>
+                  <div className={styleShow}></div>
+                </div>
+                <div className={styles.block4Second}>
+                  <div className={styles.block4Text1}> {meaning} </div>
+                </div>
               </div>
     }
   }

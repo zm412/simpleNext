@@ -23,7 +23,7 @@ class FormBlock extends React.Component{
 
   render(){
 
-    
+     
     let inputProps = this.props.collection; 
     let list = this.props.collection.idArr.map((item, index) => <CreateGrid idEl={item} key={index}  inputProps={inputProps} />)
     let button = inputProps.regimRedact ?  <ButtonSave  closeRedact={inputProps.changeRegim} currentValue={inputProps.currentValue} dataObj={inputProps.data} /> : '';

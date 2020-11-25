@@ -29,15 +29,8 @@
       }
 
       .block1LineVertical{
-        position: absolute;
-        width: 39px;
-        height: 0px;
-        right: 195px;
-        top: 21px;
-
-        border: 1px solid #FFFFFF;
-        transform: rotate(90deg);
-      }
+        @include verticalLine(39px)
+     }
 
       .block1Icon2{
         position: absolute;
@@ -171,6 +164,7 @@
               left: 0px;
           }
      }
+
      .block3Button2{
          position: absolute;
          width: 30px;
@@ -184,16 +178,15 @@
               height: 18px;
               width: 18px;
               background-image: url('../public/img/PenVector.png');
-      }
+            }
 
           .button3{
               position: absolute;
               height: 15px;
               width: 15px;
               background-image: url('../public/img/CloseVector.png');
-      }
- 
-     }
+            }
+         }
   }
 
 
@@ -209,12 +202,65 @@
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
         border-radius: 10px;
 
-            .infoBlock {
+             .block4Show {
               width: 1308px;
               height: $block4InfoHeight / 2 - 2px;
+              @include flexibleLeft ();
               border: 1px solid #CAE7FE;
               border-radius: 5px; /* Для современных браузеров */
               background: #FFFFFF;
+
+              .block4First{
+                @include flexibleCenter ();
+                height: 90px; 
+                width: 152px; 
+                top: 20px; 
+                left: 20px;
+
+
+                    .block4NameVector{
+                      position: absolute;
+                      height: 30px;
+                      width: 30px;
+                      @include flexibleCenter ();
+                      background-image: url('../public/img/NameVector.png');
+                    }
+
+                    .block4EmailVector{
+                      height: 30px;
+                      width: 30px;
+                      @include flexibleCenter ();
+                      background-image: url('../public/img/EmailVector.png');
+                    }
+
+                    .block4PhoneVector{
+                      height: 30px;
+                      width: 30px;
+                      @include flexibleCenter ();
+                      background-image: url('../public/img/PhoneVector.png');
+                    }
+
+              }
+
+              .block4Second{
+
+                  .block4Text1{
+                    width: 141px;
+                    height: 25px;
+                    left: 200;
+                    top: 36px;
+
+                    font-family: Open Sans;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 18px;
+                    line-height: 25px;
+                    color: black;
+
+                  }
+
+              }
+
 
           }
 

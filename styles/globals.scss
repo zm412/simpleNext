@@ -6,6 +6,36 @@ $block4InfoHeight: 192px;
 $blockWidth: 1308px;
 $blockRigth: 0px;
 
+@mixin verticalLine ($long) {
+    position: absolute;
+    width: $long;
+    height: 0px;
+    right: 195px;
+    top: 21px;
+
+    border: 1px solid #FFFFFF;
+    transform: rotate(90deg);
+
+}
+
+@mixin blockRedact () {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+
+@mixin flexibleLeft () {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+
+@mixin flexibleCenter () {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 @import './profile';
 
 /*

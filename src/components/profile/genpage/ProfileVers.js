@@ -195,14 +195,16 @@ class ProfileVers extends React.Component{
         label: "Имя и фамилия",
         isError: this.state.nameValidErr,
         messageErr: 'Вы неверно указали имя',
-        className:'nameBlock'
+        classNameShow:'block4NameVector',
+        classNameRedact: 'block4RedactName'
       },
       email: {
         meaning: this.state.email,
         temp: this.state.emailTemp,
         label: "Email",
         isError: this.state.emailValidErr ,
-        className: 'infoBlock'
+        classNameShow: 'block4EmailVector',
+        classNameRedact: 'block4RedactEmail'
       },
       phoneNumber:{
         meaning: this.state.phoneNumber,
@@ -210,7 +212,8 @@ class ProfileVers extends React.Component{
         label: "Номер телефона",
         isError: this.state.phoneNumberValidErr,
         messageErr: 'Вы неверно указали номер телефона',
-        className: 'infoBlock'
+        classNameShow: 'block4PhoneVector',
+        classNameRedact: 'block4RedactPhoneNumber'
       }
       }
 
