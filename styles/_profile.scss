@@ -194,55 +194,58 @@
 
      .block4{
         position: absolute;
-        height: $block4InfoHeight;
+        height: $block4Height;
         width: $blockWidth;
         right: $blockRigth;
         top: $block1Height + $block2Height + $block3Height;
-        border: 1px solid black;
+        border: 1px solid red;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
         border-radius: 10px;
+          
+        .block4Info{
+            position:absolute;
+            height: $block4InfoHeight;
+            border: 4px solid green;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;    
 
-             .block4Show {
-              width: 1308px;
-              height: $block4InfoHeight / 2 - 2px;
-              @include flexibleLeft ();
-              border: 1px solid #CAE7FE;
-              border-radius: 5px; /* Для современных браузеров */
-              background: #FFFFFF;
 
-              .block4First{
+             .block4InfoShow {
+                width: $blockWidth;
+                height: $block4InfoHeight / 2 - 2px;
+                @include flexibleLeft ();
+                border: 1px solid #CAE7FE;
+                border-radius: 5px; /* Для современных браузеров */
+                background: #FFFFFF;
+
+              .block4InfoFirst{
                 @include flexibleCenter ();
                 height: 90px; 
                 width: 152px; 
                 top: 20px; 
                 left: 20px;
+                border: 3px solid yellow;
 
 
                     .block4NameVector{
                       position: absolute;
-                      height: 30px;
-                      width: 30px;
-                      @include flexibleCenter ();
+                      @include putVector();
                       background-image: url('../public/img/NameVector.png');
                     }
 
                     .block4EmailVector{
-                      height: 30px;
-                      width: 30px;
-                      @include flexibleCenter ();
+                      @include putVector();
                       background-image: url('../public/img/EmailVector.png');
                     }
 
                     .block4PhoneVector{
-                      height: 30px;
-                      width: 30px;
-                      @include flexibleCenter ();
+                      @include putVector();
                       background-image: url('../public/img/PhoneVector.png');
                     }
 
               }
 
-              .block4Second{
+              .block4InfoSecond{
 
                   .block4Text1{
                     width: 141px;
@@ -258,13 +261,48 @@
                     color: black;
 
                   }
-
               }
-
+          }
 
           }
 
+          .block4Redact{
 
+            position:absolute;
+            height: $block4RedactHeight;
+            border: 4px solid green;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;    
+
+            .block4RedactHalf{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: $blockWidth;
+                height: $block4RedactHeight / 2 - 2px;
+                border: 1px solid #CAE7FE;
+                border-radius: 5px; /* Для современных браузеров */
+                background: #FFFFFF;
+
+                .block4ThirdPart{
+                  height: 80%;
+                  width: 300px;
+                  border: 2px solid yellow;
+
+                  .block4TextField{
+                    display: flex;
+                    height: 100%;
+                    width: 100%;
+                    justify-content: space-between;
+                  }
+
+
+                }
+                 
+            }
+
+
+          }
 }
     
 

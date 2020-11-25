@@ -17,28 +17,43 @@ class FormBlock extends React.Component{
     this.state = {
     }
   }
-  
- 
 
 
   render(){
 
      
     let inputProps = this.props.collection; 
+    let {regimRedact} = inputProps;
     let list = this.props.collection.idArr.map((item, index) => <CreateGrid idEl={item} key={index}  inputProps={inputProps} />)
     let button = inputProps.regimRedact ?  <ButtonSave  closeRedact={inputProps.changeRegim} currentValue={inputProps.currentValue} dataObj={inputProps.data} /> : '';
 
-    return(
-      <div className={styles.block4} >
 
-        <form action="" method="post" >
-            {list}
-            {button}
-        </form>
-
-      </div>
-    )
-  }
+    if(regimRedact){
+      return <div className={styles.block4}>
+        <div className={styles.block4Redact}>
+                <form action="" method="post" >
+                  <div className={styles.block4RedactHalf}>
+                    <div className={styles.block4RedactThirdPart}>
+                    {list}
+                    </div>
+                  </div>
+                  <div className={styles.block4RedactHalf}>
+                    {button}
+                  </div>
+                </form>
+            </div>
+        </div>
+    }else{
+      return <div className={styles.block4}>
+        <div className={styles.block4Info}>
+                <form action="" method="post" >
+                    {list}
+                    {button}
+                </form>
+            </div>
+        </div>
+    }
+}
 }
 
 

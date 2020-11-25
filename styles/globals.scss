@@ -2,9 +2,17 @@
 $block1Height: 75px;
 $block2Height: 75px;
 $block3Height: 128px;
+$block4Height: 250px;
 $block4InfoHeight: 192px;
+$block4RedactHeight: 242px;
 $blockWidth: 1308px;
 $blockRigth: 0px;
+
+@mixin putVector(){
+    height: 30px;
+    width: 30px;
+    @include flexibleCenter ();
+}
 
 @mixin verticalLine ($long) {
     position: absolute;
@@ -26,7 +34,7 @@ $blockRigth: 0px;
 
 @mixin flexibleLeft () {
     display: flex;
-    justify-content: left;
+    justify-content: flex-start;
     align-items: center;
   }
 

@@ -32,29 +32,29 @@ class CreateGrid extends React.Component{
 
     if(regimRedact){
       
-     return <Grid item xs={12} sm={3} >
-        <div className={styleRedact}>
-          <TextField 
+     return <div className={styles.block4ThirdPart}>
+        <TextField
             label={label} 
             id={currentId} 
             error={err} 
             helperText={err ? messageErr : '' } 
+            size="normal"
             defaultValue={meaning}
+            className={styles.block4TextField}
             variant="outlined" 
             onChange={funcOnChange} />
         </div>
-        </Grid>
         
       
     }else{
-        return <div className={styles.block4Show} >
-                <div className={styles.block4First}>
-                  <div className={styleShow}></div>
-                </div>
-                <div className={styles.block4Second}>
-                  <div className={styles.block4Text1}> {meaning} </div>
-                </div>
-              </div>
+        return <div className={styles.block4InfoShow} >
+                          <div className={styles.block4InfoFirst}>
+                            <div className={styleShow}></div>
+                          </div>
+                          <div className={styles.block4InfoSecond}>
+                            <div className={styles.block4Text1}> {meaning} </div>
+                          </div>
+                  </div>
     }
   }
 }
