@@ -1,308 +1,206 @@
 
 .gradient{
 
-  position: absolute;
-  width: 1481px;
-  height: 470px;
+  display: flex;
+  flex-direction: column;
   background-image: url('../public/img/rectangle.jpg');
-  left: -41px;
   top: 0px;
 
   }
-      .block1{
-      position: absolute;
-      height: $block1Height;
-      width: $blockWidth;
-      right: $blockRigth;
-      top: 0px;
-      border: 1px solid black;
-      
-      .block1Icon1{
-        position: absolute;
-        height: 29.25px;
-        width: 24px;
-        top: 10px;
-        right: 234px;
-        border-radius: 0px;
-        background-image: url('../public/img/Vector.png') ;
-        background-size: 100%;
-      }
 
-      .block1LineVertical{
-        @include verticalLine(39px)
-     }
 
-      .block1Icon2{
-        position: absolute;
-        width: 40px;
-        height: 40px;
-        right: 157px;
-        top: 3.75px;
-        background-image: url('../public/img/image3.jpg');
-        border-radius: 50%;
-        background-size: 100%;
-      }
 
-      .block1Text{
-        position: absolute;
-        width: 79px;
-        height: 19px;
-        right: 60px;
-        top: 15px; 
+.block3Icon1{
+    background-image: url('../public/img/image3.jpg');
+    border-radius: 50%;
+    border: 3px solid red;
+    height: 85px;
+    width: 85px;
+    
+}
+
+
+
+
+
+.block3 {
+position: absolute;
+height: $block3Height;
+top: $block1Height + $block2Height; 
+background: linear-gradient(270deg, #1A78C2 0%, #1A78C2 101.06%);
+border-radius: 10px;
+color: white;
+border: 1px solid black;
+
+  .block3Text1{
+    position: absolute;
+    width: 419px;
+    height: 41px;
+    left: 300px;
+    top: 43px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 41px;
+    /* identical to box height */
+    color: #FFFFFF;
+
+    }
+
+
+.block3Button1{
+    position: absolute;
+    width: 145px;
+    height: 19px;
+    right: 70px;
+    top: 50px;
+
+    .button1{
         font-family: Open Sans;
         font-style: normal;
         font-weight: 600;
         font-size: 14px;
         line-height: 19px;
-        /* identical to box height */
-
-
         color: #FFFFFF;
+        left: 0px;
+    }
+}
+
+.block3Button2{
+   position: absolute;
+   width: 30px;
+   height: 19px;
+   right: 40px;
+   top: 54px;
+
+
+    .button2{
+        position: absolute;
+        height: 18px;
+        width: 18px;
+        background-image: url('../public/img/PenVector.png');
       }
-    }
 
-
- 
-
-  .block2{
-    position: absolute;
-    height: $block2Height;
-    width: $blockWidth;
-    top: $block1Height;
-    right: $blockRigth;
-    border: 1px solid black;
-
-    .block2Text1{
-      position: absolute;
-      width: 190px;
-      height: 25px;
-      right: 1100px;
-      top: 0px;
-
-      font-family: Open Sans;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 17px;
-      line-height: 25px;
-      /* identical to box height */
-      text-align:right;
-      color: #FFFFFF;
-
-    }
-
-    .block2Text2{
-      position: absolute;
-      width: 190px;
-      height: 19px;
-      right: 1100px;
-      top: 20px;
-      text-align:right;
-
-      a{
-        font-family: Open Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 15px;
-        line-height: 19px;
-        color: white;
+    .button3{
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        background-image: url('../public/img/CloseVector.png');
       }
-      
-     }
-    }
+   }
+}
+
+
+
+
+.block4{
+  position: absolute;
+  height: $block4Height;
+  top: $block1Height + $block2Height + $block3Height;
+  border: 1px solid red;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
     
-  .block3 {
-      position: absolute;
-      height: $block3Height;
-      width: $blockWidth;
-      right: $blockRigth;
-      top: $block1Height + $block2Height; 
-      background: linear-gradient(270deg, #1A78C2 0%, #1A78C2 101.06%);
-      border-radius: 10px;
-      color: white;
-      border: 1px solid black;
+  .block4Info{
+      position:absolute;
+      height: $block4InfoHeight;
+      border: 4px solid green;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;    
 
-        .block3Text1{
-          position: absolute;
-          width: 419px;
-          height: 41px;
-          left: 300px;
-          top: 43px;
-          font-family: Open Sans;
-          font-style: normal;
-          font-weight: 600;
-          font-size: 30px;
-          line-height: 41px;
-          /* identical to box height */
-          color: #FFFFFF;
 
-          }
+       .block4InfoShow {
+          height: $block4InfoHeight / 2 - 2px;
+          @include flexibleLeft ();
+          border: 1px solid #CAE7FE;
+          border-radius: 5px; /* Для современных браузеров */
+          background: #FFFFFF;
 
-      .block3Icon1{
-          position: absolute;
-          width: 80px;
-          height: 80px;
-          right: 1197px;
-          top: 24px;
-          background-image: url('../public/img/image3.jpg');
-          border-radius: 50%;
-      }
+        .block4InfoFirst{
+          @include flexibleCenter ();
+          height: 90px; 
+          width: 152px; 
+          top: 20px; 
+          left: 20px;
+          border: 3px solid yellow;
 
-      .block3Button1{
-          position: absolute;
-          width: 145px;
-          height: 19px;
-          right: 70px;
-          top: 50px;
 
-          .button1{
+              .block4NameVector{
+                position: absolute;
+                @include putVector();
+                background-image: url('../public/img/NameVector.png');
+              }
+
+              .block4EmailVector{
+                @include putVector();
+                background-image: url('../public/img/EmailVector.png');
+              }
+
+              .block4PhoneVector{
+                @include putVector();
+                background-image: url('../public/img/PhoneVector.png');
+              }
+
+        }
+
+        .block4InfoSecond{
+
+            .block4Text1{
+              width: 141px;
+              height: 25px;
+              left: 200;
+              top: 36px;
+
               font-family: Open Sans;
               font-style: normal;
-              font-weight: 600;
-              font-size: 14px;
-              line-height: 19px;
-              color: #FFFFFF;
-              left: 0px;
-          }
-     }
+              font-weight: normal;
+              font-size: 18px;
+              line-height: 25px;
+              color: black;
 
-     .block3Button2{
-         position: absolute;
-         width: 30px;
-         height: 19px;
-         right: 40px;
-         top: 54px;
-
-
-          .button2{
-              position: absolute;
-              height: 18px;
-              width: 18px;
-              background-image: url('../public/img/PenVector.png');
             }
+        }
+    }
 
-          .button3{
-              position: absolute;
-              height: 15px;
-              width: 15px;
-              background-image: url('../public/img/CloseVector.png');
-            }
-         }
-  }
+    }
 
+    .block4Redact{
 
+      position:absolute;
+      height: $block4RedactHeight;
+      border: 4px solid green;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;    
 
+      .block4RedactHalf{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          height: $block4RedactHeight / 2 - 2px;
+          border: 1px solid #CAE7FE;
+          border-radius: 5px; /* Для современных браузеров */
+          background: #FFFFFF;
 
-     .block4{
-        position: absolute;
-        height: $block4Height;
-        width: $blockWidth;
-        right: $blockRigth;
-        top: $block1Height + $block2Height + $block3Height;
-        border: 1px solid red;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-        border-radius: 10px;
-          
-        .block4Info{
-            position:absolute;
-            height: $block4InfoHeight;
-            border: 4px solid green;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-            border-radius: 10px;    
+          .block4ThirdPart{
+            height: 80%;
+            width: 300px;
+            border: 2px solid yellow;
 
-
-             .block4InfoShow {
-                width: $blockWidth;
-                height: $block4InfoHeight / 2 - 2px;
-                @include flexibleLeft ();
-                border: 1px solid #CAE7FE;
-                border-radius: 5px; /* Для современных браузеров */
-                background: #FFFFFF;
-
-              .block4InfoFirst{
-                @include flexibleCenter ();
-                height: 90px; 
-                width: 152px; 
-                top: 20px; 
-                left: 20px;
-                border: 3px solid yellow;
-
-
-                    .block4NameVector{
-                      position: absolute;
-                      @include putVector();
-                      background-image: url('../public/img/NameVector.png');
-                    }
-
-                    .block4EmailVector{
-                      @include putVector();
-                      background-image: url('../public/img/EmailVector.png');
-                    }
-
-                    .block4PhoneVector{
-                      @include putVector();
-                      background-image: url('../public/img/PhoneVector.png');
-                    }
-
-              }
-
-              .block4InfoSecond{
-
-                  .block4Text1{
-                    width: 141px;
-                    height: 25px;
-                    left: 200;
-                    top: 36px;
-
-                    font-family: Open Sans;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 18px;
-                    line-height: 25px;
-                    color: black;
-
-                  }
-              }
-          }
-
-          }
-
-          .block4Redact{
-
-            position:absolute;
-            height: $block4RedactHeight;
-            border: 4px solid green;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-            border-radius: 10px;    
-
-            .block4RedactHalf{
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                width: $blockWidth;
-                height: $block4RedactHeight / 2 - 2px;
-                border: 1px solid #CAE7FE;
-                border-radius: 5px; /* Для современных браузеров */
-                background: #FFFFFF;
-
-                .block4ThirdPart{
-                  height: 80%;
-                  width: 300px;
-                  border: 2px solid yellow;
-
-                  .block4TextField{
-                    display: flex;
-                    height: 100%;
-                    width: 100%;
-                    justify-content: space-between;
-                  }
-
-
-                }
-                 
+            .block4TextField{
+              display: flex;
+              height: 100%;
+              width: 100%;
+              justify-content: space-between;
             }
 
 
           }
+           
+      }
+
+
+    }
 }
     
 
@@ -313,11 +211,6 @@
   flex-direction: column;
   flex: auto;
   background-image: url('../public/img/rectangle.jpg');
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-
 }
 
 

@@ -1,32 +1,53 @@
 
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-let React = require('react');
-import Grid from '@material-ui/core/Grid';
 import Link from 'next/link'
-import Button from '@material-ui/core/Button';
+import { IconButton, Button ,Box,Typography, Container,  Breadcrumps, AppBar, Toolbar} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 import styles from '../../../styles/Home.module.scss';
+import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
 
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+
+    menuButton: {
+      marginRight: theme.spacing(2),
+      marginLeft: theme.spacing(2),
+      color: 'white',
+    },
+    title: {
+      flexGrow: 1,
+      color: 'white',
+    },
+    icon: {
+      borderRight: '2px solid white',
+    },
+
+    
+  }));
 
 export default function Block1({chapter}){
 
   const chooseHref = chapter == 'Личный кабинет' ? '/profile' : '/auth/login';
-  
-    
-    return <div className={styles.block1} >
+  const classes = useStyles();
 
-              <Link href="/">
-                <a className={styles.block1Icon1}></a>
-              </Link>
-              <div className={styles.block1LineVertical} ></div>
-              <Link href={chooseHref}>
-                <a className={styles.block1Icon2}></a>
-              </Link>
-              <Link href={chooseHref}>
-                <a className={styles.block1Text}>{chapter} </a>
-              </Link>
+  return ( <Container maxWidth='lg'>
+      <Toolbar >
+      <Box mr={3} className={classes.icon}>
+        <IconButton edge='end' color ='inherit' className={classes.menuButton}  >
+        <NotificationsNoneOutlinedIcon />
+      </IconButton>
+    </Box>
+        <Link href={chooseHref}>
+          <a style={{textDecoration:'none'}}><Typography variant='h6' align='right' className={classes.title}>{chapter}</Typography> </a>
+        </Link>
        
-      </div>
+    </Toolbar>
+    </Container>
+
    
+  )
   }
 
 

@@ -1,26 +1,15 @@
 
 let React = require('react');
-import TextField from '@material-ui/core/TextField';
 import { borders } from '@material-ui/system';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import styles from '../../../../styles/Home.module.scss';
+import { makeStyles } from '@material-ui/core/styles';
+import {Typography, Box, TextField, Button} from '@material-ui/core';
 
 
-class CreateGrid extends React.Component{
+export default function CreateGrid({collection, idEl}){
 
-  constructor(props){
-    super(props);
-    this.state = {
-
-    }
-  }
-
-  
-  render(){
-
-    let {data, idArr, regimRedact, funcOnChange} = this.props.inputProps;
-    let currentId = this.props.idEl;
+    let {data, idArr, regimRedact, funcOnChange} = collection;
+    let currentId = idEl;
     let defineProfile;
     let label = data[currentId].label;
     let meaning = data[currentId].meaning;
@@ -32,7 +21,7 @@ class CreateGrid extends React.Component{
 
     if(regimRedact){
       
-     return <div className={styles.block4ThirdPart}>
+     return <Box className={styles.block4ThirdPart}>
         <TextField
             label={label} 
             id={currentId} 
@@ -43,26 +32,24 @@ class CreateGrid extends React.Component{
             className={styles.block4TextField}
             variant="outlined" 
             onChange={funcOnChange} />
-        </div>
+        </Box>
         
       
     }else{
-        return <div className={styles.block4InfoShow} >
-                          <div className={styles.block4InfoFirst}>
-                            <div className={styleShow}></div>
-                          </div>
-                          <div className={styles.block4InfoSecond}>
-                            <div className={styles.block4Text1}> {meaning} </div>
-                          </div>
-                  </div>
+        return <Box className={styles.block4InfoShow} >
+                          <Box className={styles.block4InfoFirst}>
+                            <Box className={styleShow}></Box>
+                          </Box>
+                          <Box className={styles.block4InfoSecond}>
+                            <Typography variant='h6'> {meaning} </Typography>
+                          </Box>
+                  </Box>
     }
   }
-}
 
 
 
 
-module.exports = CreateGrid;
 
 
 

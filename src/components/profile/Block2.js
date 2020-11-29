@@ -1,40 +1,53 @@
 
 let React = require('react');
-import Grid from '@material-ui/core/Grid';
 import Link from 'next/link'
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import styles from '../../../styles/Home.module.scss';
+import { Button, Grid ,Box,Typography, Container,  Breadcrumbs, AppBar, Toolbar} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 
-
-class Block2 extends React.Component{
-
-  constructor(props){
-    super(props);
+const useStyles = makeStyles((theme) => ( {
+  root: {
+    flexGrow: 1,
+  },
+  main:{
+    flexGrow: 1,
+    border: '1px solid red',
+  },
+  title: {
+    marginLeft: 1,
+    flexGrow: 1,
+    color: 'white'
+  },
+  bread: {
+    color: 'white',
+    underline: 'hover'
   }
+
+
+} )) 
+
+export default function Block2(){
+
+  const classes = useStyles();
  
-  render(){
     
-    return(
-      <div className={styles.block2}>
-        <div className={styles.block2Text1}>ЛИЧНЫЙ ПРОФИЛЬ</div>
-        <div className={styles.block2Text2}>
-            <Link color="inherit" href="/">
-                <a> Главная / </a>
+  return (
+    <Container maxWidth='lg' className={classes.main}>
+        <Typography variant='h6' className={classes.title}>ЛИЧНЫЙ ПРОФИЛЬ</Typography>
+           <Breadcrumbs aria-label="breadcrumb" className={classes.bread}>
+            <Link href="/" >
+              <Typography className={classes.bread}> Главная </Typography>
             </Link>
-              
-            <Link color="inherit" href="/profile">
-                <a>Личный профиль</a>
-            </Link>
-        </div>
-    </div>
+                <Typography className={classes.bread}>Личный профиль</Typography>
+            </Breadcrumbs>
+                
+    </Container>
     )
-  }
 }
 
 
 
 
-module.exports = Block2;
 
 
 

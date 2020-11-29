@@ -1,5 +1,4 @@
 let React = require('react');
-import Grid from '@material-ui/core/Grid';
 import Link from 'next/link'
 import Block1 from '../Block1';
 import Block3 from '../Block3';
@@ -9,6 +8,8 @@ import jwt from 'jsonwebtoken';
 import Router from 'next/router';
 import { useRouter } from 'next/router'
 import styles from '../../../../styles/Home.module.scss'
+import { Button ,Box,Typography, Container,  Breadcrumps, AppBar, Toolbar} from '@material-ui/core';
+
 
 
 class ProfileVers extends React.Component{
@@ -142,8 +143,7 @@ class ProfileVers extends React.Component{
         "Authorization": token
       },
       body: JSON.stringify(data)
-    })
-      .then( response => response.json())
+    }) .then( response => response.json())
       .then((result) => {
         console.log(result, 'resultOk')
         this.setState({
@@ -219,14 +219,12 @@ class ProfileVers extends React.Component{
 
     let propsForForm = {data: data,  idArr: idArr, regimRedact: this.state.regimRedact, changeRegim: this.changeRegim, funcOnChange: this.funcOnChange, currentValue: this.currentValue };
     
-    return(
-    <div className={styles.gradient}>
-      
+    return( <Container maxWidth='lg' className={styles.profile}>
       <Block1 chapter={data.email.meaning}/>
       <Block2 />
       <Block3 fullName={this.state.name} forClick={this.clickForRedactProfile} buttonsName={this.state.regimRedact ? 'ЗАКРЫТЬ': 'РЕДАКТИРОВАТЬ'}  />
        <FormBlock  collection={propsForForm} />
-    </div>
+    </Container>
    )
   }
 }

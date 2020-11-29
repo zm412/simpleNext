@@ -2,12 +2,8 @@
 import ProfileVers from '../components/profile/genpage/ProfileVers';
 import Block3 from '../components/profile/Block3';
 import {useState, useEffect} from 'react';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import Link from 'next/link'
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Container from '@material-ui/core/Container';
+import {Container, Button, Grid, Typography, Breadcrumbs} from  '@material-ui/core';
 import jwt from 'jsonwebtoken';
 const models = require('../models');
 const database = require('../../database');

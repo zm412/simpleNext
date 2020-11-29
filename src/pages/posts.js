@@ -5,7 +5,7 @@ import Block2 from '../components/profile/Block2';
 import { useState, useEffect, useCallback } from 'react';
 import Router from 'next/router';
 import Link from 'next/link'
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import {Breadcrumbs, Container} from  '@material-ui/core';
 import jwt from 'jsonwebtoken'
 
 
@@ -30,14 +30,14 @@ export default function Home(){
 
  
       
-  return <div className={styles.profile}>
+  return <Container maxWidth='lg' className={styles.profile}>
             <Block1  chapter={ openNext }/>
               <Breadcrumbs aria-label="breadcrumb">
                 <Link color="inherit" href="/" >
                   Главная
                 </Link>
               </Breadcrumbs>
-          </div>
+          </Container>
 }
 
 

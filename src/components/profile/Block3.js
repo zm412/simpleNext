@@ -1,36 +1,47 @@
 
 let React = require('react');
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import styles from '../../../styles/Home.module.scss';
+import {makeStyles} from '@material-ui/core/styles';
+import { IconButton, Button ,Box,Typography, Container,  Breadcrumps, AppBar, Toolbar} from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
+import CreateIcon from '@material-ui/icons/Create';
 
 
-class Block3 extends React.Component{
 
-  constructor(props){
-    super(props);
-  }
-  
-  render(){
 
-    let secondButtClass = this.props.buttonsName == 'РЕДАКТИРОВАТЬ' ? styles.button2 : styles.button3;
+const url = '../../../public/img/image3.jpg' ;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    background: 'linear-gradient(270deg, #1A78C2 0%, #1A78C2 101.06%)',
+    borderRadius: '10px',
+    color: 'white',
+    border: '1px solid black',
+    marginTop: theme.spacing(2),
+    height: '130px',
+  },
+
+
+}))
+
+
+export default function Block3({buttonsName, forClick, fullName}){
+
+  const classes = useStyles();
+  let iconButt = buttonsName == 'РЕДАКТИРОВАТЬ' ? <CreateIcon /> : <CloseIcon />  ;
     
-    return(
+  return ( <Container maxWidth='lg'  className={classes.root}>
+    <Grid direction='row' justify='flex-end' alignItems='right'>
+    <Grid item className={styles.block3Icon1}></Grid>
+    <Grid item className={styles.block3Text1}>{fullName}</Grid>
+        <Grid item>
+          <Button href="#text-buttons"  onClick={forClick} color="primary" startIcon={iconButt} >{buttonsName}</Button>
+        </Grid>
 
-      <div className={styles.block3}>
-        <div className={styles.block3Icon1}></div>
-        <div className={styles.block3Text1}>{this.props.fullName}</div>
-        <div className={styles.block3Button1}>
-          <Button href="#text-buttons"  className={styles.button1} onClick={this.props.forClick} color="primary">{this.props.buttonsName}</Button>
-        </div>
-
-        <div className={styles.block3Button2}>
-          <Button  onClick={this.props.forClick}><div className={secondButtClass}></div></Button>
-        </div>
-      </div>
+    </Grid>
+    </Container>
     )
   }
-}
 
 
 
