@@ -1,43 +1,50 @@
 
-import Dialog from "@material-ui/core/Dialog";
 let React = require('react');
-import Button from '@material-ui/core/Button';
+import { borders } from '@material-ui/system';
+import CreateGrid from './genpage/CreateGrid';
+import ButtonSave from './genpage/ButtonSave';
+import styles from '../../../styles/Home.module.scss';
+import { IconButton,Grid, Button ,Box,Typography, Container,  Breadcrumps, AppBar, Toolbar} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 
 
-class Block4 extends React.Component{
+const useStyles = makeStyles((theme) => ( {
+  root: {
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)',
+    height: '250px',
+    marginTop: theme.spacing(2)
 
-  constructor(props){
-    super(props);
+  },
 
-    this.state = {
-      isModalOpen: false
-    }
+  paper: {
+    height: '120px',
+    borderRadius: '10px',
+    backgroundColor: 'white',
   }
-  
-  render(){
+} ));
 
 
-
+export default function Block4({ collection }){
     
-    return(
-    <div>
-      <Button round variant="contained" onClick={ () => this.setState({isModalOpen: true}) } color="primary">Сохранить</Button>
-            <Dialog
-              title="Сохранить измеения?"
-              open={this.state.isModalOpen}
-              onRequesClose={() => this.setState({isModalOpen:false})}
-              >
-              Actionslkjljljl ljlsjdf l;kjsdfjsdflj sd;flkjsd f;lksjdfo
-              </Dialog>
-    </div>       
-    )
-  }
+    const classes = useStyles();
+     
+    let list = collection.idArr.map((item, index) => <CreateGrid idEl={item} key={index}  collection={collection} />)
+    let button = collection.regimRedact ?  <ButtonSave  closeRedact={collection.changeRegim} currentValue={collection.currentValue} dataObj={collection.data} /> : '';
+
+
+  return ( 
+    < Grid spacing={4} className={classes.root}>
+                <form action="" method="post" >
+                    {list}
+                    {button}
+                </form>
+    </Grid>
+  )
 }
 
 
 
 
-module.exports = Block4;
 
 
 

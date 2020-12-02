@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Block1 from '../Block1';
 import Block3 from '../Block3';
 import Block2 from '../Block2';
-import FormBlock from './FormBlock';
+import Block4 from '../Block4';
 import jwt from 'jsonwebtoken';
 import Router from 'next/router';
 import { useRouter } from 'next/router'
@@ -195,7 +195,6 @@ class ProfileVers extends React.Component{
         label: "Имя и фамилия",
         isError: this.state.nameValidErr,
         messageErr: 'Вы неверно указали имя',
-        classNameShow:'block4NameVector',
         classNameRedact: 'block4RedactName'
       },
       email: {
@@ -203,7 +202,6 @@ class ProfileVers extends React.Component{
         temp: this.state.emailTemp,
         label: "Email",
         isError: this.state.emailValidErr ,
-        classNameShow: 'block4EmailVector',
         classNameRedact: 'block4RedactEmail'
       },
       phoneNumber:{
@@ -212,7 +210,6 @@ class ProfileVers extends React.Component{
         label: "Номер телефона",
         isError: this.state.phoneNumberValidErr,
         messageErr: 'Вы неверно указали номер телефона',
-        classNameShow: 'block4PhoneVector',
         classNameRedact: 'block4RedactPhoneNumber'
       }
       }
@@ -223,7 +220,7 @@ class ProfileVers extends React.Component{
       <Block1 chapter={data.email.meaning}/>
       <Block2 />
       <Block3 fullName={this.state.name} forClick={this.clickForRedactProfile} buttonsName={this.state.regimRedact ? 'ЗАКРЫТЬ': 'РЕДАКТИРОВАТЬ'}  />
-       <FormBlock  collection={propsForForm} />
+       <Block4  collection={propsForForm} />
     </Container>
    )
   }

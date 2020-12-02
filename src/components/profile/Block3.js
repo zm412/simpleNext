@@ -1,7 +1,6 @@
 
 let React = require('react');
 import Grid from '@material-ui/core/Grid';
-import styles from '../../../styles/Home.module.scss';
 import {makeStyles} from '@material-ui/core/styles';
 import { IconButton, Button ,Box,Typography, Container,  Breadcrumps, AppBar, Toolbar} from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';

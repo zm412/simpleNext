@@ -1,14 +1,24 @@
 
 let React = require('react');
 import { borders } from '@material-ui/system';
-import CreateGrid from './CreateGrid';
-import ButtonSave from './ButtonSave';
-import Block4 from '../Block4';
-import styles from '../../../../styles/Home.module.scss';
-import {Typography, Box, Button} from '@material-ui/core';
+import CreateGrid from './genpage/CreateGrid';
+import ButtonSave from './genpage/ButtonSave';
+import styles from '../../../styles/Home.module.scss';
+import { IconButton, Button ,Box,Typography, Container,  Breadcrumps, AppBar, Toolbar} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 
 
-export default function FormBlock({ collection }){
+const useStyles = makeStyles((theme) => {
+  root: {
+    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)',
+    borderRadius: '10px',
+  },
+});
+
+
+export default function Block4({ collection }){
+    
+    const classes = useStyles();
      
     let {regimRedact} = collection;
     let list = collection.idArr.map((item, index) => <CreateGrid idEl={item} key={index}  collection={collection} />)
@@ -16,7 +26,9 @@ export default function FormBlock({ collection }){
 
 
     if(regimRedact){
-      return <Box className={styles.block4}>
+  return ( 
+    <Container maxWidth='lg'  className={classes.root}>
+        <Box className={styles.block4}>
         <Box className={styles.block4Redact}>
                 <form action="" method="post" >
                   <Box className={styles.block4RedactHalf}>
@@ -28,15 +40,18 @@ export default function FormBlock({ collection }){
                 </form>
             </Box>
         </Box>
+    </Container>
+  )
     }else{
-      return <Box className={styles.block4}>
+  return ( <Container maxWidth='lg'  className={classes.root}>
         <Box className={styles.block4Info}>
                 <form action="" method="post" >
                     {list}
                     {button}
                 </form>
-            </Box>
         </Box>
+    </Container>
+  )
     }
 }
 
