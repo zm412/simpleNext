@@ -10,35 +10,39 @@ import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ( {
   root: {
+    position: 'relative',
+    marginBottom: theme.spacing(4),
+    backgroundSize:'cover',
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)',
-    height: '250px',
     marginTop: theme.spacing(2)
-
   },
 
   paper: {
     height: '120px',
     borderRadius: '10px',
     backgroundColor: 'white',
+    display: 'flex',
   }
 } ));
 
 
 export default function Block4({ collection }){
     
-    const classes = useStyles();
+  const classes = useStyles();
+
+  const getWrap = (listOrder) => collection.regimRedact ? <Box className={classes.paper}> {listOrder} </Box> : listOrder ; 
      
     let list = collection.idArr.map((item, index) => <CreateGrid idEl={item} key={index}  collection={collection} />)
     let button = collection.regimRedact ?  <ButtonSave  closeRedact={collection.changeRegim} currentValue={collection.currentValue} dataObj={collection.data} /> : '';
+    let checkedList = getWrap(list);
 
 
-  return ( 
-    < Grid spacing={4} className={classes.root}>
-                <form action="" method="post" >
+  return ( <Container maxWidth='lg'>
+    <Grid container spacing={3} className={classes.root}>
                     {list}
-                    {button}
-                </form>
     </Grid>
+                    {button}
+    </Container>
   )
 }
 
