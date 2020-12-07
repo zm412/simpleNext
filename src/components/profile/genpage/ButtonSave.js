@@ -7,6 +7,7 @@ import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: 'flex'
   },
   closeButton: {
     position: 'absolute',
@@ -14,17 +15,26 @@ const useStyles = makeStyles((theme) => ({
     top: theme.spacing(1),
     color: theme.palette.grey[500],
   },
-  dialog: {
-    height: '200px',
-    width: '200px',
-    borderRadius: '15%',
-
-  },
   typographyStyle: {
-    height: '200px',
-    width: '200px',
+    marginTop: theme.spacing(4),
+    marginButtom: theme.spacing(6),
+    color: theme.palette.grey[700],
+    padding: theme.spacing(4) 
+  },
+  dialogModal:{
+    height: '300px',
+    width: '600px',
     borderRadius: '25px',
+    border: '1px solid blue',
+  },
+  boxButton: {
+    textAlign: 'center',
+  },
+  buttonStyle:{
+    borderRadius: 41,
+    height: '50px', 
   }
+
 
 })) 
 
@@ -51,10 +61,7 @@ export default function ButtonSave({closeRedact, currentValue, dataObj}) {
            }else{
              console.log(err)
              window.location.href = '/auth/login'
-
            }
-
-
       });
 
     if(verifyToken){
@@ -82,51 +89,91 @@ export default function ButtonSave({closeRedact, currentValue, dataObj}) {
 
   return (
     <div>
-      <Fab variant="contained" color="primary" onClick={handleClickOpen}>
-       Сохранить 
-      </Fab>
+      <Button 
+          className={classes.buttonStyle}
+          style={{color: '#FFFFFF', backgroundColor: '#01BDA7' , width: '300px'}}
+          variant="contained"
+          onClick={handleClickOpen}
+    > Сохранить изменения </Button>
 
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" className={classes.root} open={open}>
+      <Dialog onClose={handleClose} open={open}>
 
-        <IconButton aria-label="close" className={classes.closeButton} onClick={handleCloseModal}>
-          <CloseIcon />
-        </IconButton>
+        <div className={classes.dialogModal}>
 
-          <Typography display='block' className={classes.typographyStyle} gutterBottom> Сохранить изменения?  </Typography>
+          <IconButton aria-label="close" className={classes.closeButton} onClick={handleCloseModal}>
+            <CloseIcon />
+          </IconButton>
+
+          <Typography align='center' variant='h5' display='block' className={classes.typographyStyle} > Сохранить изменения?</Typography>
     
-          <Button autoFocus variant="contained" color="primary" onClick={handleClose} color="primary">
-            Save changes
-          </Button>
-          <Button autoFocus variant="contained" color="primary" onClick={closeRedact} color="primary">
-    Cancel
-          </Button>
+                            <Box m={3} className={classes.boxButton}>
+                                <Button autoFocus 
+                                    className={classes.buttonStyle}
+                                    variant="contained" 
+                                    size='medium' 
+                                    onClick={handleClose} 
+                                    style={{color: '#FFFFFF', backgroundColor: '#01BDA7', width: '200px'}}
+                          > Сохранить </Button>
+                            </Box>
+
+                          <Box m={3} className={classes.boxButton}>
+                                <Button autoFocus  
+                                    className={classes.buttonStyle}
+                                    variant='outlined'
+                                    size='medium' 
+                                    rounded
+                                    onClick={closeRedact}
+                                    style={{ color: '#01BDA7', borderColor: '#01BDA7' , width: '200px'}}
+                          > Не сохранять </Button>
+                            </Box>
+
+    </div>
       </Dialog>
 
-      <Dialog onClose={handleCloseSecond} aria-labelledby="customized-dialog-title" open={openSecond}>
-        <IconButton aria-label="close" className={classes.closeButton} onClick={handleCloseModal}>
-          <CloseIcon />
-        </IconButton>
-          <Typography gutterBottom> Изменения сохранены </Typography>
+
+      <Dialog onClose={handleCloseSecond} open={openSecond} >
+        <div className={classes.dialogModal}>
+          <IconButton aria-label="close" className={classes.closeButton} onClick={handleCloseModal}>
+            <CloseIcon />
+          </IconButton>
+          <Typography align='center' variant='h5' display='block' className={classes.typographyStyle} > Изменения сохранены </Typography>
     
-          <Button autoFocus variant="contained" color="primary" onClick={handleCloseSecond} color="primary">
-   Хорошо 
-          </Button>
+                            <Box m={3} className={classes.boxButton}>
+                                  <Button 
+                                    autoFocus 
+                                    variant="contained" 
+                                    style={{color: '#FFFFFF', backgroundColor: '#01BDA7', width: '200px'}}
+                                    onClick={handleCloseSecond} 
+                                    color="primary"
+                                    className={classes.buttonStyle}
+                            > Хорошо </Button>
+                            </Box>
+
+    </div>
       </Dialog>
     
-      <Dialog onClose={handleCloseErr} aria-labelledby="customized-dialog-title" open={openErr}>
-        <IconButton aria-label="close" className={classes.closeButton} onClick={handleCloseModal}>
-          <CloseIcon />
-        </IconButton>
-          <Typography gutterBottom>
+      <Dialog onClose={handleCloseErr} open={openErr}>
+        <div className={classes.dialogModal}>
+
+          <IconButton aria-label="close" className={classes.closeButton} onClick={handleCloseModal}>
+            <CloseIcon />
+          </IconButton>
+
+          <Typography align='center' variant='h5' display='block' className={classes.typographyStyle} > 
    Неверно введены данные. Изменения не сохранены 
-        </Typography>
-    
-          <Button autoFocus variant="contained" color="primary" onClick={handleCloseErr} color="primary">
-              Вернуться к редактированию 
-          </Button>
+          </Typography>
+                              
+                          <Box m={3} className={classes.boxButton}>
+                                <Button 
+                                  autoFocus 
+                                  variant="contained" 
+                                  onClick={handleCloseErr} 
+                                  className={classes.buttonStyle}
+                                  style={{color: '#FFFFFF', backgroundColor: '#01BDA7', width: '300px'}}
+                          > Вернуться к редактированию </Button>
+                          </Box>
+        </div>
       </Dialog>
-
-
 
     </div>
   )
