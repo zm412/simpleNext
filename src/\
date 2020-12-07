@@ -16,14 +16,12 @@ const useStyles = makeStyles((theme) => ({
   },
   dialog: {
     height: '200px',
-    width: '200px',
-    borderRadius: '15%',
-
+    width: '200px'
   },
   typographyStyle: {
-    height: '200px',
-    width: '200px',
-    borderRadius: '25px',
+     ...theme.typography.button,
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(1),
   }
 
 })) 
@@ -92,7 +90,7 @@ export default function ButtonSave({closeRedact, currentValue, dataObj}) {
           <CloseIcon />
         </IconButton>
 
-          <Typography display='block' className={classes.typographyStyle} gutterBottom> Сохранить изменения?  </Typography>
+          <div className={classes.typographyStyle} gutterBottom>{"Сохранить изменения?"}</div>
     
           <Button autoFocus variant="contained" color="primary" onClick={handleClose} color="primary">
             Save changes

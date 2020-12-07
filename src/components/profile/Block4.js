@@ -10,19 +10,19 @@ import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ( {
   root: {
-    position: 'relative',
     marginBottom: theme.spacing(4),
+    paddingTop: theme.spacing(1),
     backgroundSize:'cover',
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)',
-    marginTop: theme.spacing(2)
-  },
-
-  paper: {
-    height: '120px',
-    borderRadius: '10px',
+    marginTop: theme.spacing(2),
     backgroundColor: 'white',
-    display: 'flex',
-  }
+    borderRadius: '5px',
+  },
+  paper: {
+    margin: theme.spacing(2),
+    backgroundColor: 'white',
+    textAlign: 'center',
+  },
 } ));
 
 
@@ -40,8 +40,14 @@ export default function Block4({ collection }){
   return ( <Container maxWidth='lg'>
     <Grid container spacing={3} className={classes.root}>
                     {list}
+    {
+      button && (
+          <Grid item xs={12} md={5} alignItems='center' className={classes.paper}>
+                          {button}
+          </Grid>
+      )
+    }
     </Grid>
-                    {button}
     </Container>
   )
 }
