@@ -4,6 +4,8 @@ import { IconButton,Grid, Button ,Box,Typography, Container,  Breadcrumps, AppBa
 import {makeStyles} from '@material-ui/core/styles';
 import styles from '../../../styles/Home.module.scss';
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
+import Image from 'next/image';
+import {useRouter} from 'next/router';
 
 
   const useStyles = makeStyles((theme) => ({
@@ -22,26 +24,51 @@ import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneO
     icon: {
       borderRight: '2px solid white',
     },
-    
-
-    
+    buttonExit:{
+      color: 'white',
+      borderRight: '2px solid white',
+      height: '100%'
+    },
+    iconPerson: {
+      borderRadius: '50%',
+  },
+ 
   }));
 
 export default function Block1({chapter}){
 
   const chooseHref = chapter == 'Личный кабинет' ? '/profile' : '/auth/login';
   const classes = useStyles();
+  const router = useRouter();
+
+  const exitFunc = () => {
+    sessionStorage.setItem('login', '') ;
+    router.push('/auth/login', undefined, { shallow: true })
+
+  }
 
   return (
     <Grid container alignItems="flex-start" justify="flex-end" direction="row">
         <Toolbar>
-      <Box mr={3} align-content='flex-end' className={classes.icon}>
+      <Box mr={3} align-content='flex-end' className={classes.buttonExit}>
+    <Button onClick={exitFunc}>Выход</Button>
+    </Box>
+      <Box mr={3} align-content='flex-end' className={classes.buttonExit}>
     
         <IconButton edge='end' color ='inherit' className={classes.menuButton}  >
             <NotificationsNoneOutlinedIcon />
         </IconButton>
 
       </Box>
+      <Box mr={2}>
+          <Image
+              src="/img/image3.png"
+              alt="avatar"
+              width={45}
+              height={45}
+              className={classes.iconPerson}
+            />
+    </Box>
         <Link href={chooseHref}>
           <a style={{textDecoration:'none'}}><Typography variant='h6' align='right' className={classes.title}>{chapter}</Typography> </a>
         </Link>

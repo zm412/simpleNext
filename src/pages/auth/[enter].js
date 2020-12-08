@@ -35,6 +35,7 @@ export default function Login(){
          if(!err && decoded){
             sessionStorage.setItem('login', JSON.stringify({login: true, id: resp.dataId, token: resp.token})) ;
             setIsAuthorizated(true);
+            router.push('/posts')
            console.log(decoded)
            console.log(isAuthorizated)
          }

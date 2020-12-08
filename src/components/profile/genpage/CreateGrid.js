@@ -24,7 +24,6 @@ const useStyle = makeStyles((theme) => ({
   noRedact: {
     borderBottom:  '2px solid #01BDA7',
     width: '100%',
-    
   },
   icon: {
     color: '#01BDA7',

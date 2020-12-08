@@ -19,6 +19,7 @@ export default function Profile(){
   const [store, setStore] = useState(null);
   const [id, setId] = useState(null);
   const router = useRouter();
+  const [isError, setIsError] = useState(false);
 
   
    const getInfo = (obj) => {
@@ -44,6 +45,11 @@ export default function Profile(){
 
   }
 
+  useEffect( () => {
+    if(isError){
+      router.push('/auth/login');
+    }
+  }, [isError] )
 
 
    useEffect( () => {
@@ -52,7 +58,10 @@ export default function Profile(){
        jwt.verify(data.token, process.env.NEXT_PUBLIC_SECRET_KEY, function(err, decoded) {
          if(!err && decoded){
             getInfo(data);
-            console.log(decoded)
+            console.log(decoded);
+           setIsError(false);
+         }else{
+           setIsError(true);
          }
     });
 
@@ -68,7 +77,8 @@ export default function Profile(){
       )
 
     }
-    </Container>
+    
+        </Container>
     </div>
   )
 
