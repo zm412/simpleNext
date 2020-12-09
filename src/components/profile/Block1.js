@@ -24,13 +24,9 @@ import {useRouter} from 'next/router';
     icon: {
       borderRight: '2px solid white',
     },
-    buttonExit:{
-      color: 'white',
-      borderRight: '2px solid white',
-      height: '100%'
-    },
+    
     iconPerson: {
-      borderRadius: '50%',
+    borderRadius: '50%',
   },
  
   }));
@@ -42,7 +38,7 @@ export default function Block1({chapter}){
   const router = useRouter();
 
   const exitFunc = () => {
-    sessionStorage.setItem('login', '') ;
+    sessionStorage.setItem('login', JSON.stringify({})) ;
     router.push('/auth/login', undefined, { shallow: true })
 
   }
@@ -50,10 +46,10 @@ export default function Block1({chapter}){
   return (
     <Grid container alignItems="flex-start" justify="flex-end" direction="row">
         <Toolbar>
-      <Box mr={3} align-content='flex-end' className={classes.buttonExit}>
+      <Box mr={3} align-content='flex-end' className={classes.icon}>
     <Button onClick={exitFunc}>Выход</Button>
     </Box>
-      <Box mr={3} align-content='flex-end' className={classes.buttonExit}>
+      <Box mr={3} align-content='flex-end' className={classes.icon}>
     
         <IconButton edge='end' color ='inherit' className={classes.menuButton}  >
             <NotificationsNoneOutlinedIcon />
